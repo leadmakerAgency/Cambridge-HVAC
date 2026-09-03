@@ -1,26 +1,241 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ==========================================================================
+   Cambridge HVAC — design tokens
+   PDR §3. Every colour, size and type decision in the site resolves to a
+   token defined here. No component writes a raw hex value.
+   ========================================================================== */
+
+@theme {
+  /* --- Brand palette. Fixed by the client, PDR §3. Do not change. --- */
+  --color-navy: #1d3a4d;
+  --color-navy-deep: #162939;
+  --color-plum: #6a2153;
+  --color-plum-deep: #3f122f;
+
+  /* Plum lifted for legibility on navy grounds. #6a2153 on #1d3a4d is
+     roughly 1.4:1 and unreadable — this is the on-dark counterpart.
+     PROPOSED, not in the original PDR palette. */
+  --color-plum-light: #c2749e;
+
+  /* --- Supporting neutrals. PDR §3, proposed, awaiting sign-off.
+         Each is biased toward navy so they read as one family. --- */
+  --color-frost: #f4f6f7;
+  --color-mist: #e3eaee;
+  --color-slate: #4a6070;
+  --color-rule: #d2dce2;
+  --color-rule-dark: #2c4356;
+
+  /* --- Type scale. PDR §3. --- */
+  --text-hero: clamp(3rem, 7vw, 5.5rem);
+  --text-hero--line-height: 1.02;
+  --text-hero--letter-spacing: -0.02em;
+  --text-hero--font-weight: 700;
+
+  --text-h2: clamp(2rem, 4vw, 3rem);
+  --text-h2--line-height: 1.1;
+  --text-h2--letter-spacing: -0.018em;
+  --text-h2--font-weight: 700;
+
+  --text-h3: 1.35rem;
+  --text-h3--line-height: 1.25;
+  --text-h3--letter-spacing: -0.01em;
+  --text-h3--font-weight: 600;
+
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.65;
+
+  --text-eyebrow: 0.75rem;
+  --text-eyebrow--line-height: 1.3;
+  --text-eyebrow--letter-spacing: 0.14em;
+  --text-eyebrow--font-weight: 700;
+
+  /* --- Layout rhythm --- */
+  --spacing-section: 5.5rem;
+  --spacing-section-lg: 7.5rem;
+  --spacing-gutter: 1.25rem;
+  --container-site: 75rem;
+
+  --radius-card: 0.5rem;
+  --radius-control: 0.375rem;
+
+  --shadow-card: 0 1px 2px rgb(22 41 57 / 0.06), 0 12px 32px -16px rgb(22 41 57 / 0.22);
+  --shadow-panel: 0 24px 64px -24px rgb(22 41 57 / 0.45);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* next/font injects the family names as CSS variables at runtime, so these
+   must resolve at use-site rather than being inlined by Tailwind. */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-clash), "Archivo", "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-sans: var(--font-satoshi), "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-frost);
+    color: var(--color-navy-deep);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+    /* Clash Display has a narrow word space; negative tracking closes it
+       further. Reopen it so display headings keep their word gaps. */
+    word-spacing: 0.08em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* One focus style for the whole site. PDR §12 — WCAG 2.2 AA. */
+  :focus-visible {
+    outline: 2px solid var(--color-plum);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* On navy grounds the plum ring disappears; lift it. */
+  .on-navy :focus-visible {
+    outline-color: var(--color-plum-light);
+  }
+
+  ::selection {
+    background-color: var(--color-plum);
+    color: white;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Measure for running text — PDR keeps body copy near 65–72 characters. */
+  .measure {
+    max-width: 68ch;
+  }
+
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: var(--text-eyebrow);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+}
+
+/* Scroll reveal (see components/ui/Reveal.tsx).
+   Fail-safe: content is visible by default, so nothing is ever hidden from a
+   crawler or a no-JS visitor. The hidden start state only applies when the
+   browser actually runs scripts. */
+@layer utilities {
+  @media (scripting: enabled) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(1rem);
+      transition:
+        opacity 0.7s var(--ease-out-soft),
+        transform 0.7s var(--ease-out-soft);
+      will-change: opacity, transform;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* Animated service icons (components/home/UnitTypes.tsx).
+   The global reduced-motion rule below stops all of these automatically. */
+@layer utilities {
+  @keyframes hvac-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes hvac-drift {
+    to {
+      stroke-dashoffset: -16;
+    }
+  }
+
+  /* Rotation origin is set per-icon via inline `transform-origin` in viewBox
+     units — a 3-blade fan has 120° symmetry, so its bounding-box centre is NOT
+     the rotation axis and `transform-box: fill-box` would make it orbit. */
+  .spin-fan {
+    transform-box: view-box;
+    animation: hvac-spin 4.5s linear infinite;
+  }
+  .spin-fan-slow {
+    transform-box: view-box;
+    animation: hvac-spin 7s linear infinite;
+  }
+  .drift-air {
+    stroke-dasharray: 4 6;
+    animation: hvac-drift 1s linear infinite;
+  }
+
+  /* Spin a whole icon SVG (e.g. a Lucide icon) around its own centre. */
+  .spin-icon {
+    transform-box: view-box;
+    transform-origin: center;
+    animation: hvac-spin 5s linear infinite;
+  }
+  .spin-icon-slow {
+    transform-box: view-box;
+    transform-origin: center;
+    animation: hvac-spin 8s linear infinite;
+  }
+  .group:hover .spin-icon {
+    animation-duration: 1.8s;
+  }
+  .group:hover .spin-icon-slow {
+    animation-duration: 3.2s;
+  }
+
+  /* Speed up when the reader hovers the card. */
+  .group:hover .spin-fan {
+    animation-duration: 1.6s;
+  }
+  .group:hover .spin-fan-slow {
+    animation-duration: 3s;
+  }
+  .group:hover .drift-air {
+    animation-duration: 0.6s;
+  }
+}
+
+/* PDR §4 — motion is restrained by decision, and removable by preference. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

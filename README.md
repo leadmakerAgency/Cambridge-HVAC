@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cambridge HVAC
 
-## Getting Started
+Marketing site for an air conditioning and heating installer serving Cambridge, UK.
 
-First, run the development server:
+Built to **PDR v2** — the governing specification. Read it before changing anything:
+https://claude.ai/code/artifact/16382145-7de8-4cab-b50b-a372f19134b9
+
+## Run it
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build status
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Part | Scope | State |
+| --- | --- | --- |
+| 1 | Foundation and design system | **Done** |
+| 2 | Copy and homepage | Not started |
+| 3 | Service pages and conversion | Not started |
+| 4 | Blog | Not started |
+| 5 | Technical, legal and launch | Not started |
 
-## Learn More
+`/` currently renders a temporary design-system page. Part 2 replaces it with the real homepage.
+Most navigation links resolve to the branded 404 until Parts 3 to 5 build those pages.
 
-To learn more about Next.js, take a look at the following resources:
+## How this project is organised
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Path | What lives there |
+| --- | --- |
+| `src/config/site.ts` | **Every business detail.** Phone, email, hours, credentials. Nothing is hard-coded elsewhere. |
+| `src/config/nav.ts` | Header, footer and form option lists |
+| `src/app/globals.css` | All design tokens — colour, type scale, spacing. No component writes a raw hex. |
+| `src/fonts/` | Self-hosted Clash Display and Satoshi, plus licences |
+| `src/components/brand/` | Logo and C-mark |
+| `src/components/layout/` | Header, footer, mobile call bar, section and container primitives |
+| `src/components/ui/` | Buttons, form fields, accordion, the one motion primitive |
+| `src/lib/form-provider.ts` | Enquiry delivery adapter. Swap providers by editing this file only. |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Rules that are not obvious from the code
 
-## Deploy on Vercel
+1. **No third-party scripts.** No analytics, tag manager, chat widget, map embed, font CDN or
+   CAPTCHA. The site therefore sets no non-essential cookies and needs no consent banner.
+   Adding any of these changes that, and needs a decision first — PDR section 12.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. **The claims boundary is binding.** PDR section 11 lists exactly what the site may and may not
+   claim. No reviews, no testimonials, no installation counts, no years in business, no prices,
+   no 24/7 availability. This is a new business with no track record.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. **Placeholders are realistic on purpose,** so the design reads correctly in review. Every one
+   is marked `LAUNCH:` in `src/config/site.ts`. See `LAUNCH-CHECKLIST.md`.
+
+## Stack
+
+Next.js 16 (App Router) - TypeScript - Tailwind CSS v4 - statically generated - no database, no CMS.
