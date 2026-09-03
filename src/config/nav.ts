@@ -34,6 +34,7 @@ export const mainNav: NavItem[] = [
   { label: "Services", children: servicesLinks },
   { label: "What It Costs", href: "/what-it-costs" },
   { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -52,6 +53,7 @@ export const footerNav: { heading: string; links: NavLink[] }[] = [
     heading: "Company",
     links: [
       { label: "About us", href: "/about" },
+      { label: "Blog", href: "/blog" },
       { label: "Contact", href: "/contact" },
       { label: "Get a quote", href: "/get-a-quote" },
     ],

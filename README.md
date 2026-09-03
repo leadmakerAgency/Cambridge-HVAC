@@ -21,7 +21,7 @@ Then open http://localhost:3000
 | 1 | Foundation and design system | **Done** |
 | 2 | Copy and homepage | Not started |
 | 3 | Service pages and conversion | Not started |
-| 4 | Blog | Not started |
+| 4 | Blog | **Done** (Sveltia CMS at `/admin`) |
 | 5 | Technical, legal and launch | Not started |
 
 `/` currently renders a temporary design-system page. Part 2 replaces it with the real homepage.
@@ -33,6 +33,9 @@ Most navigation links resolve to the branded 404 until Parts 3 to 5 build those 
 | --- | --- |
 | `src/config/site.ts` | **Every business detail.** Phone, email, hours, credentials. Nothing is hard-coded elsewhere. |
 | `src/config/nav.ts` | Header, footer and form option lists |
+| `src/content/blog/` | Blog posts as Markdown (edited via Sveltia CMS) |
+| `src/lib/blog.ts` | Reads and filters published posts |
+| `public/admin/` | Sveltia CMS UI and config |
 | `src/app/globals.css` | All design tokens — colour, type scale, spacing. No component writes a raw hex. |
 | `src/fonts/` | Self-hosted Clash Display and Satoshi, plus licences |
 | `src/components/brand/` | Logo and C-mark |
@@ -40,11 +43,18 @@ Most navigation links resolve to the branded 404 until Parts 3 to 5 build those 
 | `src/components/ui/` | Buttons, form fields, accordion, the one motion primitive |
 | `src/lib/form-provider.ts` | Enquiry delivery adapter. Swap providers by editing this file only. |
 
+## Blog and CMS
+
+- Public pages: `/blog` and `/blog/[slug]`
+- Editor: `/admin` — sign in with a GitHub personal access token (`repo` scope for `leadmakerAgency/Cambridge-HVAC`)
+- Saving a post commits Markdown to the repo; Vercel rebuilds the site
+
 ## Rules that are not obvious from the code
 
-1. **No third-party scripts.** No analytics, tag manager, chat widget, map embed, font CDN or
+1. **No third-party scripts on the public site.** No analytics, tag manager, chat widget, map embed, font CDN or
    CAPTCHA. The site therefore sets no non-essential cookies and needs no consent banner.
    Adding any of these changes that, and needs a decision first — PDR section 12.
+   The Sveltia script loads only on `/admin`, not on public pages.
 
 2. **The claims boundary is binding.** PDR section 11 lists exactly what the site may and may not
    claim. No reviews, no testimonials, no installation counts, no years in business, no prices,
@@ -55,4 +65,4 @@ Most navigation links resolve to the branded 404 until Parts 3 to 5 build those 
 
 ## Stack
 
-Next.js 16 (App Router) - TypeScript - Tailwind CSS v4 - statically generated - no database, no CMS.
+Next.js 16 (App Router) - TypeScript - Tailwind CSS v4 - statically generated - Markdown blog with Sveltia CMS (GitHub).

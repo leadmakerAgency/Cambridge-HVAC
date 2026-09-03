@@ -99,10 +99,13 @@ export function Header() {
 
   const solid = scrolled || !overHero || menuOpen;
 
-  const isActive = (item: NavItem) =>
-    hasChildren(item)
-      ? item.children.some((c) => pathname === c.href)
-      : pathname === item.href;
+  const isActive = (item: NavItem) => {
+    if (hasChildren(item)) {
+      return item.children.some((c) => pathname === c.href || pathname.startsWith(`${c.href}/`));
+    }
+    if (item.href === "/") return pathname === "/";
+    return pathname === item.href || pathname.startsWith(`${item.href}/`);
+  };
 
   return (
     <header

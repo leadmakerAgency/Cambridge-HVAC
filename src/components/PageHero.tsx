@@ -12,12 +12,15 @@ export function PageHero({
   title,
   intro,
   crumb,
+  parentCrumb,
   children,
 }: {
   eyebrow: string;
   title: string;
   intro?: string;
   crumb?: string;
+  /** Optional middle crumb, e.g. `{ label: "Blog", href: "/blog" }` for article pages. */
+  parentCrumb?: { label: string; href: string };
   children?: React.ReactNode;
 }) {
   return (
@@ -33,6 +36,14 @@ export function PageHero({
           <Link href="/" className="transition-colors hover:text-white">
             Home
           </Link>
+          {parentCrumb && (
+            <>
+              <span className="px-2 text-white/30">/</span>
+              <Link href={parentCrumb.href} className="transition-colors hover:text-white">
+                {parentCrumb.label}
+              </Link>
+            </>
+          )}
           <span className="px-2 text-white/30">/</span>
           <span className="text-white/80">{crumb ?? title}</span>
         </nav>
