@@ -16,12 +16,12 @@ export const metadata: Metadata = {
 };
 
 const drivers = [
-  { icon: Home, title: "Number of rooms", body: "One room or the whole house makes the biggest difference. More indoor units and more pipework means more materials and time." },
-  { icon: Wind, title: "Type of indoor unit", body: "A standard wall-mounted unit costs less than a concealed ducted system that has to be hidden above ceilings." },
-  { icon: Route, title: "Pipe run length", body: "The distance between the indoor units and the outdoor condenser affects the materials and labour involved." },
-  { icon: BrickWall, title: "How your home is built", body: "Solid walls, cavities and finishes all change how straightforward the installation is." },
-  { icon: Plug, title: "Electrical supply", body: "Some installations need additional electrical work to power the system safely." },
-  { icon: Construction, title: "Access", body: "Upper floors, awkward outdoor positions or scaffolding needs can add to the job." },
+  { icon: Home, title: "Number of rooms", body: "One room or the whole house makes the biggest difference. More indoor units and more pipework means more materials and time.", tint: "bg-tint-sky", accent: "text-sky" },
+  { icon: Wind, title: "Type of indoor unit", body: "A standard wall-mounted unit costs less than a concealed ducted system that has to be hidden above ceilings.", tint: "bg-tint-mint", accent: "text-spring" },
+  { icon: Route, title: "Pipe run length", body: "The distance between the indoor units and the outdoor condenser affects the materials and labour involved.", tint: "bg-tint-sun", accent: "text-sun" },
+  { icon: BrickWall, title: "How your home is built", body: "Solid walls, cavities and finishes all change how straightforward the installation is.", tint: "bg-tint-lilac", accent: "text-violet" },
+  { icon: Plug, title: "Electrical supply", body: "Some installations need additional electrical work to power the system safely.", tint: "bg-tint-peach", accent: "text-coral" },
+  { icon: Construction, title: "Access", body: "Upper floors, awkward outdoor positions or scaffolding needs can add to the job.", tint: "bg-tint-teal", accent: "text-teal" },
 ];
 
 const included = [
@@ -81,7 +81,6 @@ export default function Page() {
         eyebrow="What it costs"
         title="What air conditioning actually costs"
         intro="There is no single price for air conditioning, because no two homes are the same. Here is an honest look at what drives the cost, and why a free survey gives you a better answer than a number over the phone."
-        crumb="What it costs"
       />
 
       {/* Drivers */}
@@ -96,8 +95,8 @@ export default function Page() {
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {drivers.map((d, i) => (
             <Reveal key={d.title} delay={(i % 3) * 70}>
-              <div className="flex h-full flex-col rounded-card border border-rule bg-white p-6">
-                <span className="text-plum">
+              <div className={`flex h-full flex-col rounded-card p-6 ${d.tint}`}>
+                <span className={d.accent}>
                   <d.icon aria-hidden="true" strokeWidth={1.6} className="h-7 w-7" />
                 </span>
                 <h3 className="mt-4 font-display text-[1.1rem] font-semibold text-navy">{d.title}</h3>
@@ -142,18 +141,28 @@ export default function Page() {
       </Section>
 
       {/* CTA */}
-      <section className="bg-navy-deep py-16 on-navy sm:py-20">
+      <section className="py-12 sm:py-16">
         <Container>
-          <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
-            <div className="max-w-xl">
-              <h2 className="text-h2 text-white">Want a real number for your home?</h2>
-              <p className="mt-3 text-white/70">
-                Book a free survey and we will give you a fixed price, with no obligation.
-              </p>
+          <div className="on-navy relative overflow-hidden rounded-[1.75rem] bg-ink px-8 py-14 sm:px-12 sm:py-16 lg:px-16">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_120%_at_0%_50%,rgba(106,33,83,0.4)_0%,transparent_70%)]"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 opacity-[0.03] [background-image:radial-gradient(circle_at_1px_1px,#fff_1px,transparent_0)] [background-size:32px_32px]"
+            />
+            <div className="relative flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+              <div className="max-w-xl">
+                <h2 className="text-h2 text-white">Want a real number for your home?</h2>
+                <p className="mt-3 text-white/70">
+                  Book a free survey and we will give you a fixed price, with no obligation.
+                </p>
+              </div>
+              <ButtonLink href="/get-a-quote" variant="outlineLight" size="lg">
+                Get a free quote
+              </ButtonLink>
             </div>
-            <ButtonLink href="/get-a-quote" size="lg">
-              Get a free quote
-            </ButtonLink>
           </div>
         </Container>
       </section>

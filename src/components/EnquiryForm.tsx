@@ -157,7 +157,7 @@ export function EnquiryForm({
       />
 
       {status === "error" && (
-        <p className="rounded-control border border-plum/30 bg-plum/5 px-3.5 py-2.5 text-[0.85rem] text-plum" role="alert">
+        <p className="rounded-control border border-coral/30 bg-coral/5 px-3.5 py-2.5 text-[0.85rem] text-coral" role="alert">
           {serverError}
         </p>
       )}

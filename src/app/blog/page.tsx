@@ -23,7 +23,6 @@ export default function BlogIndexPage() {
         eyebrow="Blog"
         title="Guides for cooler, more comfortable homes"
         intro="Straight answers on air conditioning, heat pumps and looking after your system — written for Cambridge homes."
-        crumb="Blog"
       />
 
       <Section tone="frost">

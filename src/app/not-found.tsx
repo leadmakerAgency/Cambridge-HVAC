@@ -8,7 +8,7 @@ export const metadata = { title: "Page not found" };
 
 export default function NotFound() {
   return (
-    <Section tone="navyDeep" size="large" className="-mt-20 pt-40">
+    <Section tone="ink" size="large" className="-mt-20 pt-40">
       <p className="eyebrow text-plum-light">Error 404</p>
 
       <h1 className="mt-4 max-w-4xl text-hero text-white">That page isn&rsquo;t here.</h1>

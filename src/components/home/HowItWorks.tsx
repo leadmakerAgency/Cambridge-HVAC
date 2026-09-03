@@ -27,7 +27,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <Section tone="navyDeep" id="howitworks">
+    <Section tone="ink" id="howitworks">
       <div className="max-w-2xl">
         <p className="eyebrow text-plum-light">How it works</p>
         <h2 className="mt-3 text-h2 text-white">Three steps, no guesswork</h2>
@@ -50,7 +50,7 @@ export function HowItWorks() {
                 <span className="grid h-20 w-20 place-items-center rounded-full bg-navy ring-1 ring-white/15">
                   <step.icon className="h-8 w-8 text-plum-light" />
                 </span>
-                <span className="absolute -top-1.5 -right-1.5 grid h-8 w-8 place-items-center rounded-full bg-plum font-display text-[0.95rem] font-bold text-white ring-4 ring-navy-deep">
+                <span className="absolute -top-1.5 -right-1.5 grid h-8 w-8 place-items-center rounded-full bg-plum font-display text-[0.95rem] font-bold text-white ring-4 ring-ink">
                   {i + 1}
                 </span>
               </div>

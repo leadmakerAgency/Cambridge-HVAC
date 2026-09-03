@@ -11,10 +11,26 @@ import { site } from "@/config/site";
 import { cn } from "@/lib/utils";
 import type { ServiceContent } from "@/content/services";
 
+const cardAccents = [
+  { tint: "bg-tint-sky", accent: "text-sky", checkBg: "bg-sky/10", checkFg: "text-sky" },
+  { tint: "bg-tint-mint", accent: "text-spring", checkBg: "bg-spring/10", checkFg: "text-spring" },
+  { tint: "bg-tint-sun", accent: "text-sun", checkBg: "bg-sun/10", checkFg: "text-sun" },
+  { tint: "bg-tint-lilac", accent: "text-violet", checkBg: "bg-violet/10", checkFg: "text-violet" },
+  { tint: "bg-tint-peach", accent: "text-coral", checkBg: "bg-coral/10", checkFg: "text-coral" },
+  { tint: "bg-tint-teal", accent: "text-teal", checkBg: "bg-teal/10", checkFg: "text-teal" },
+];
+
+const stepAccents = [
+  { bg: "bg-tint-sky", fg: "text-sky" },
+  { bg: "bg-tint-mint", fg: "text-spring" },
+  { bg: "bg-tint-lilac", fg: "text-violet" },
+  { bg: "bg-tint-peach", fg: "text-coral" },
+];
+
 export function ServiceTemplate({ content }: { content: ServiceContent }) {
   return (
     <>
-      <PageHero eyebrow={content.eyebrow} title={content.title} intro={content.intro} crumb={content.eyebrow}>
+      <PageHero eyebrow={content.eyebrow} title={content.title} intro={content.intro}>
         <div className="flex flex-wrap gap-3">
           <ButtonLink href="/get-a-quote" size="lg">
             Get a free quote
@@ -51,7 +67,7 @@ export function ServiceTemplate({ content }: { content: ServiceContent }) {
       {/* What we cover */}
       <Section tone="frost" id="covers">
         <div className="max-w-2xl">
-          <p className="eyebrow text-plum">{content.coversEyebrow ?? "What’s included"}</p>
+          <p className="eyebrow text-plum">{content.coversEyebrow ?? "What's included"}</p>
           <h2 className="mt-3 text-h2 text-navy">{content.coversHeading ?? "What we cover"}</h2>
         </div>
         <div
@@ -60,37 +76,40 @@ export function ServiceTemplate({ content }: { content: ServiceContent }) {
             content.covers.length % 3 === 0 && "lg:grid-cols-3",
           )}
         >
-          {content.covers.map((c, i) => (
-            <Reveal key={c.title} delay={(i % 3) * 80}>
-              <article className="group flex h-full flex-col overflow-hidden rounded-card border border-rule bg-white transition-shadow duration-300 hover:shadow-card">
-                {c.image && (
-                  <div className="relative aspect-[16/10] overflow-hidden">
-                    <Image
-                      src={c.image}
-                      alt={c.title}
-                      fill
-                      sizes="(max-width: 640px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-500 ease-out-soft group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy/55 via-navy/10 to-transparent" />
+          {content.covers.map((c, i) => {
+            const color = cardAccents[i % cardAccents.length];
+            return (
+              <Reveal key={c.title} delay={(i % 3) * 80}>
+                <article className="group flex h-full flex-col overflow-hidden rounded-card border border-rule bg-white transition-shadow duration-300 hover:shadow-card">
+                  {c.image && (
+                    <div className="relative aspect-[16/10] overflow-hidden">
+                      <Image
+                        src={c.image}
+                        alt={c.title}
+                        fill
+                        sizes="(max-width: 640px) 100vw, 33vw"
+                        className="object-cover transition-transform duration-500 ease-out-soft group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy/55 via-navy/10 to-transparent" />
+                    </div>
+                  )}
+                  <div className="flex flex-1 flex-col p-6">
+                    <span className="mb-3 flex items-center gap-2.5">
+                      <IconCheck bg={color.checkBg} fg={color.checkFg} />
+                    </span>
+                    <h3 className="font-display text-[1.1rem] font-semibold text-navy">{c.title}</h3>
+                    <p className="mt-1.5 text-[0.95rem] text-slate">{c.body}</p>
                   </div>
-                )}
-                <div className="flex flex-1 flex-col p-6">
-                  <span className="mb-3 flex items-center gap-2.5">
-                    <IconCheck />
-                  </span>
-                  <h3 className="font-display text-[1.1rem] font-semibold text-navy">{c.title}</h3>
-                  <p className="mt-1.5 text-[0.95rem] text-slate">{c.body}</p>
-                </div>
-              </article>
-            </Reveal>
-          ))}
+                </article>
+              </Reveal>
+            );
+          })}
         </div>
       </Section>
 
       {/* Options grid */}
       {content.systemTypes && (
-        <Section tone="navyDeep" id="options">
+        <Section tone="ink" id="options">
           <div className="max-w-2xl">
             <p className="eyebrow text-plum-light">{content.highlightsEyebrow ?? "Options"}</p>
             <h2 className="mt-3 text-h2 text-white">
@@ -147,14 +166,17 @@ export function ServiceTemplate({ content }: { content: ServiceContent }) {
             <p className="eyebrow text-plum">{content.propertyEyebrow ?? "Suitable for"}</p>
             <h2 className="mt-3 text-h2 text-navy">{content.propertyHeading ?? "Homes of every kind"}</h2>
             <ul className="mt-6 flex flex-wrap gap-2.5">
-              {content.propertyTypes.map((t) => (
-                <li
-                  key={t}
-                  className="rounded-full border border-rule bg-white px-4 py-2 text-[0.9rem] text-navy"
-                >
-                  {t}
-                </li>
-              ))}
+              {content.propertyTypes.map((t, i) => {
+                const color = cardAccents[i % cardAccents.length];
+                return (
+                  <li
+                    key={t}
+                    className={cn("rounded-full px-4 py-2 text-[0.9rem] font-medium", color.tint, color.accent)}
+                  >
+                    {t}
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
@@ -188,15 +210,18 @@ export function ServiceTemplate({ content }: { content: ServiceContent }) {
           <h2 className="mt-3 text-h2 text-navy">Simple from start to finish</h2>
         </div>
         <ol className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-          {content.process.map((step, i) => (
-            <Reveal as="li" key={step.title} delay={(i % 4) * 70}>
-              <span className="font-display text-3xl font-bold text-plum/30">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <h3 className="mt-2 font-display text-[1.1rem] font-semibold text-navy">{step.title}</h3>
-              <p className="mt-1.5 text-[0.95rem] text-slate">{step.body}</p>
-            </Reveal>
-          ))}
+          {content.process.map((step, i) => {
+            const color = stepAccents[i % stepAccents.length];
+            return (
+              <Reveal as="li" key={step.title} delay={(i % 4) * 70}>
+                <span className={cn("inline-flex h-12 w-12 items-center justify-center rounded-xl font-display text-xl font-bold", color.bg, color.fg)}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-4 font-display text-[1.1rem] font-semibold text-navy">{step.title}</h3>
+                <p className="mt-1.5 text-[0.95rem] text-slate">{step.body}</p>
+              </Reveal>
+            );
+          })}
         </ol>
       </Section>
 
@@ -218,8 +243,8 @@ export function ServiceTemplate({ content }: { content: ServiceContent }) {
         </div>
       </Section>
 
-      {/* Enquiry form at the foot of every service page (PDR §8) */}
-      <section id="quote" className="on-navy bg-navy-deep py-section">
+      {/* Enquiry form */}
+      <section id="quote" className="on-navy bg-ink py-section">
         <Container>
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
             <div>

@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Container } from "./Container";
 
-type Tone = "frost" | "white" | "mist" | "navy" | "navyDeep" | "plum";
+type Tone = "frost" | "white" | "mist" | "navy" | "navyDeep" | "ink" | "plum" | "spring";
 
 const tones: Record<Tone, string> = {
   frost: "bg-frost text-navy-deep",
@@ -9,7 +9,9 @@ const tones: Record<Tone, string> = {
   mist: "bg-mist text-navy-deep",
   navy: "on-navy bg-navy text-white",
   navyDeep: "on-navy bg-navy-deep text-white",
+  ink: "on-navy bg-ink text-white",
   plum: "on-navy bg-plum text-white",
+  spring: "bg-spring text-white",
 };
 
 /**

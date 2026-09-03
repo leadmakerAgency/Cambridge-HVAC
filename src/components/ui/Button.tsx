@@ -5,9 +5,9 @@ type Variant = "primary" | "secondary" | "outline" | "outlineLight" | "ghost";
 type Size = "sm" | "md" | "lg";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-plum text-white hover:bg-plum-deep",
+  primary: "bg-plum text-white shadow-action hover:bg-plum-deep",
   secondary: "bg-navy text-white hover:bg-navy-deep",
-  outline: "border border-navy/25 text-navy hover:border-navy hover:bg-navy hover:text-white",
+  outline: "border border-navy/20 text-navy hover:border-plum hover:bg-plum hover:text-white hover:shadow-action",
   outlineLight: "border border-white/30 text-white hover:border-white hover:bg-white hover:text-navy",
   ghost: "text-navy hover:bg-navy/5",
 };
@@ -19,8 +19,8 @@ const sizes: Record<Size, string> = {
 };
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-control font-sans font-medium " +
-  "transition-colors duration-200 ease-out-soft disabled:pointer-events-none disabled:opacity-50 " +
+  "inline-flex items-center justify-center gap-2 rounded-full font-sans font-semibold " +
+  "transition-all duration-200 ease-out-soft disabled:pointer-events-none disabled:opacity-50 " +
   "whitespace-nowrap";
 
 type CommonProps = {

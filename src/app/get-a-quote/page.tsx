@@ -31,7 +31,6 @@ export default async function Page({
         eyebrow="Get a quote"
         title="Get your free, fixed-price quote"
         intro="Tell us a little about your home and what you need. We will arrange a free survey and come back with a clear price, with no obligation to go ahead."
-        crumb="Get a quote"
       />
 
       <Section tone="frost">

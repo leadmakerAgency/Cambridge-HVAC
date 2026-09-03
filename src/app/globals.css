@@ -7,19 +7,52 @@
    ========================================================================== */
 
 @theme {
-  /* --- Brand palette. Fixed by the client, PDR §3. Do not change. --- */
+  /* --- Brand palette --- */
   --color-navy: #1d3a4d;
   --color-navy-deep: #162939;
   --color-plum: #6a2153;
   --color-plum-deep: #3f122f;
 
-  /* Plum lifted for legibility on navy grounds. #6a2153 on #1d3a4d is
-     roughly 1.4:1 and unreadable — this is the on-dark counterpart.
-     PROPOSED, not in the original PDR palette. */
   --color-plum-light: #c2749e;
 
-  /* --- Supporting neutrals. PDR §3, proposed, awaiting sign-off.
-         Each is biased toward navy so they read as one family. --- */
+  /* Deepest ground. The showcase bands (services, closing CTA) sit on this
+     rather than navy-deep, so the photography and the pastels have something
+     to push off. */
+  --color-ink: #0e2130;
+  --color-ink-soft: #15293a;
+  --color-ink-deep: #091520;
+
+  /* --- Action colour. Every primary call to action on the site is this
+         green: one colour, one meaning, unmissable on navy and on white. --- */
+  --color-spring: #1eae65;
+  --color-spring-deep: #17914f;
+  --color-spring-light: #5fd79b;
+
+  /* --- Supporting accent family. Sections rotate through these so the site
+         reads as a palette rather than a two-colour scheme. Each is picked to
+         hold ~4.5:1 on white and pairs with a tint below. --- */
+  --color-sky: #2a6fc9;
+  --color-sky-light: #85b6f2;
+  --color-teal: #0d8f9c;
+  --color-teal-light: #6fd2da;
+  --color-sun: #b9791a;
+  --color-sun-light: #f0bf62;
+  --color-coral: #cf5340;
+  --color-coral-light: #f4a08e;
+  --color-violet: #6a4bc4;
+  --color-violet-light: #b6a4f0;
+
+  /* --- Pastel tints. The grounds for the bento cards; light enough that
+         navy-deep body copy clears AA on every one of them. --- */
+  --color-tint-sky: #dee8fb;
+  --color-tint-mint: #d3efdd;
+  --color-tint-sun: #f7f2c7;
+  --color-tint-blush: #fbdff1;
+  --color-tint-lilac: #e7e1fa;
+  --color-tint-peach: #fde4d4;
+  --color-tint-teal: #d3eef1;
+
+  /* --- Supporting neutrals --- */
   --color-frost: #f4f6f7;
   --color-mist: #e3eaee;
   --color-slate: #4a6070;
@@ -32,8 +65,8 @@
   --text-hero--letter-spacing: -0.02em;
   --text-hero--font-weight: 700;
 
-  --text-h2: clamp(2rem, 4vw, 3rem);
-  --text-h2--line-height: 1.1;
+  --text-h2: clamp(2rem, 4vw, 3.25rem);
+  --text-h2--line-height: 1.08;
   --text-h2--letter-spacing: -0.018em;
   --text-h2--font-weight: 700;
 
@@ -45,22 +78,30 @@
   --text-body: 1.0625rem;
   --text-body--line-height: 1.65;
 
-  --text-eyebrow: 0.75rem;
+  --text-eyebrow: 0.72rem;
   --text-eyebrow--line-height: 1.3;
   --text-eyebrow--letter-spacing: 0.14em;
   --text-eyebrow--font-weight: 700;
 
   /* --- Layout rhythm --- */
-  --spacing-section: 5.5rem;
-  --spacing-section-lg: 7.5rem;
+  --spacing-section: 6rem;
+  --spacing-section-lg: 8rem;
   --spacing-gutter: 1.25rem;
-  --container-site: 75rem;
 
-  --radius-card: 0.5rem;
-  --radius-control: 0.375rem;
+  /* Wider measure than the original 75rem: the bento grids and the three-up
+     card rows need the room, and the gutters below grow with it. */
+  --container-site: 84rem;
 
-  --shadow-card: 0 1px 2px rgb(22 41 57 / 0.06), 0 12px 32px -16px rgb(22 41 57 / 0.22);
+  /* Soft, generous corners — the single strongest carrier of the refreshed
+     feel, so it is one token and everything inherits it. */
+  --radius-card: 1.25rem;
+  --radius-card-sm: 0.875rem;
+  --radius-control: 0.75rem;
+
+  --shadow-card: 0 1px 2px rgb(22 41 57 / 0.05), 0 18px 40px -22px rgb(22 41 57 / 0.20);
+  --shadow-lift: 0 2px 4px rgb(22 41 57 / 0.05), 0 28px 56px -26px rgb(22 41 57 / 0.30);
   --shadow-panel: 0 24px 64px -24px rgb(22 41 57 / 0.45);
+  --shadow-action: 0 10px 24px -12px rgb(106 33 83 / 0.55);
 
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -272,6 +313,38 @@
   }
   .group:hover .spin-icon-slow {
     animation-duration: 3.2s;
+  }
+
+  /* Hover-only pulse: gentle scale breathing on card hover. */
+  @keyframes hvac-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+  }
+  .pulse-hover {
+    transform-box: view-box;
+    transform-origin: center;
+    transition: transform 0.3s var(--ease-out-soft);
+  }
+  .group:hover .pulse-hover {
+    animation: hvac-pulse 1.6s ease-in-out infinite;
+  }
+
+  /* Hover-only spin: resting state is still, spins on card hover. */
+  .spin-hover {
+    transform-box: view-box;
+    transform-origin: center;
+    transition: transform 0.4s var(--ease-out-soft);
+  }
+  .group:hover .spin-hover {
+    animation: hvac-spin 3s linear infinite;
+  }
+  .spin-hover-slow {
+    transform-box: view-box;
+    transform-origin: center;
+    transition: transform 0.4s var(--ease-out-soft);
+  }
+  .group:hover .spin-hover-slow {
+    animation: hvac-spin 5s linear infinite;
   }
 
   /* Speed up when the reader hovers the card. */

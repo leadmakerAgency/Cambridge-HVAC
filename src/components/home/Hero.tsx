@@ -13,13 +13,13 @@ import { IconShield, IconTag } from "@/components/ui/icons";
  */
 export function Hero() {
   return (
-    <section data-hero className="on-navy relative -mt-20 overflow-hidden bg-navy-deep pt-32 sm:pt-36">
+    <section data-hero className="on-navy relative -mt-20 overflow-hidden bg-ink pt-32 sm:pt-36">
       {/* Layered background, all CSS, no image. */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_85%_-10%,#2a5068_0%,#1d3a4d_38%,#162939_72%)]" />
-        <div className="absolute -top-1/3 right-0 h-[70vh] w-[70vh] rounded-full bg-[radial-gradient(circle,rgba(106,33,83,0.55)_0%,rgba(106,33,83,0)_65%)] blur-2xl" />
-        <div className="absolute inset-0 opacity-[0.06] [background-image:linear-gradient(#fff_1px,transparent_1px),linear-gradient(90deg,#fff_1px,transparent_1px)] [background-size:56px_56px] [mask-image:radial-gradient(120%_80%_at_50%_0%,#000_40%,transparent_85%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-frost/0" />
+        <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_85%_-10%,#1a4a5a_0%,#132f42_38%,#0e2130_72%)]" />
+        <div className="absolute -top-1/3 right-0 h-[70vh] w-[70vh] rounded-full bg-[radial-gradient(circle,rgba(106,33,83,0.35)_0%,rgba(106,33,83,0)_65%)] blur-2xl" />
+        <div className="absolute -bottom-1/4 -left-1/4 h-[50vh] w-[50vh] rounded-full bg-[radial-gradient(circle,rgba(106,33,83,0.3)_0%,rgba(106,33,83,0)_60%)] blur-3xl" />
+        <div className="absolute inset-0 opacity-[0.04] [background-image:linear-gradient(#fff_1px,transparent_1px),linear-gradient(90deg,#fff_1px,transparent_1px)] [background-size:56px_56px] [mask-image:radial-gradient(120%_80%_at_50%_0%,#000_40%,transparent_85%)]" />
       </div>
 
       <Container className="relative pb-20 sm:pb-24">

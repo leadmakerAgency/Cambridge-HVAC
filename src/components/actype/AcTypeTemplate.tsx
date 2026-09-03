@@ -9,14 +9,42 @@ import { ButtonLink, ArrowRight } from "@/components/ui/Button";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { IconCheck } from "@/components/service/IconCheck";
 import { site } from "@/config/site";
+import { cn } from "@/lib/utils";
 import { acTypeNav, type AcTypeContent } from "@/content/actypes";
+
+const featureAccents = [
+  { tint: "bg-tint-sky", accent: "text-sky", iconBg: "bg-sky/12" },
+  { tint: "bg-tint-mint", accent: "text-spring", iconBg: "bg-spring/12" },
+  { tint: "bg-tint-lilac", accent: "text-violet", iconBg: "bg-violet/12" },
+  { tint: "bg-tint-sun", accent: "text-sun", iconBg: "bg-sun/12" },
+  { tint: "bg-tint-peach", accent: "text-coral", iconBg: "bg-coral/12" },
+  { tint: "bg-tint-teal", accent: "text-teal", iconBg: "bg-teal/12" },
+];
+
+const benefitAccents = [
+  { bg: "bg-sky/10", fg: "text-sky" },
+  { bg: "bg-spring/10", fg: "text-spring" },
+  { bg: "bg-violet/10", fg: "text-violet" },
+  { bg: "bg-coral/10", fg: "text-coral" },
+  { bg: "bg-sun/10", fg: "text-sun" },
+  { bg: "bg-teal/10", fg: "text-teal" },
+];
+
+const exploreAccents = [
+  "from-sky/20 to-teal/10 group-hover:bg-sky group-hover:ring-sky",
+  "from-spring/20 to-spring/10 group-hover:bg-spring group-hover:ring-spring",
+  "from-coral/20 to-coral/10 group-hover:bg-coral group-hover:ring-coral",
+  "from-violet/20 to-violet/10 group-hover:bg-violet group-hover:ring-violet",
+  "from-sun/20 to-sun/10 group-hover:bg-sun group-hover:ring-sun",
+  "from-plum-light/20 to-plum/10 group-hover:bg-plum group-hover:ring-plum",
+];
 
 export function AcTypeTemplate({ content }: { content: AcTypeContent }) {
   const others = acTypeNav.filter((t) => t.slug !== content.slug);
 
   return (
     <>
-      <PageHero eyebrow="AC Types" title={content.title} intro={content.tagline} crumb={content.title}>
+      <PageHero eyebrow="AC Types" title={content.title} intro={content.tagline}>
         <div className="flex flex-wrap gap-3">
           <ButtonLink href="/get-a-quote" size="lg">
             Get a free quote
@@ -42,17 +70,20 @@ export function AcTypeTemplate({ content }: { content: AcTypeContent }) {
         </div>
 
         <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {content.features.map((f, i) => (
-            <Reveal key={f.title} delay={(i % 3) * 80}>
-              <div className="flex h-full flex-col rounded-card border border-rule bg-frost p-6">
-                <span className="grid h-12 w-12 place-items-center rounded-xl bg-plum/10 text-plum">
-                  <f.icon aria-hidden="true" strokeWidth={1.6} className="h-6 w-6" />
-                </span>
-                <h3 className="mt-4 font-display text-[1.1rem] font-semibold text-navy">{f.title}</h3>
-                <p className="mt-2 text-[0.92rem] text-slate">{f.body}</p>
-              </div>
-            </Reveal>
-          ))}
+          {content.features.map((f, i) => {
+            const color = featureAccents[i % featureAccents.length];
+            return (
+              <Reveal key={f.title} delay={(i % 3) * 80}>
+                <div className={cn("flex h-full flex-col rounded-card p-6", color.tint)}>
+                  <span className={cn("grid h-12 w-12 place-items-center rounded-xl", color.iconBg, color.accent)}>
+                    <f.icon aria-hidden="true" strokeWidth={1.6} className="h-6 w-6" />
+                  </span>
+                  <h3 className="mt-4 font-display text-[1.1rem] font-semibold text-navy">{f.title}</h3>
+                  <p className="mt-2 text-[0.92rem] text-slate">{f.body}</p>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </Section>
 
@@ -74,12 +105,15 @@ export function AcTypeTemplate({ content }: { content: AcTypeContent }) {
             <p className="eyebrow text-plum">Benefits</p>
             <h2 className="mt-3 text-h2 text-navy">{content.benefitsHeading}</h2>
             <ul className="mt-6 flex flex-col gap-3">
-              {content.benefits.map((b) => (
-                <li key={b} className="flex items-center gap-3">
-                  <IconCheck />
-                  <span className="text-[0.95rem] text-navy">{b}</span>
-                </li>
-              ))}
+              {content.benefits.map((b, i) => {
+                const color = benefitAccents[i % benefitAccents.length];
+                return (
+                  <li key={b} className="flex items-center gap-3">
+                    <IconCheck bg={color.bg} fg={color.fg} />
+                    <span className="text-[0.95rem] text-navy">{b}</span>
+                  </li>
+                );
+              })}
             </ul>
             <div className="mt-8">
               <ButtonLink href="/get-a-quote" size="lg">
@@ -105,29 +139,32 @@ export function AcTypeTemplate({ content }: { content: AcTypeContent }) {
       </Section>
 
       {/* Explore other types */}
-      <Section tone="navyDeep">
+      <Section tone="ink">
         <div className="max-w-2xl">
           <p className="eyebrow text-plum-light">Explore</p>
           <h2 className="mt-3 text-h2 text-white">Other AC system types</h2>
         </div>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {others.map((t, i) => (
-            <Reveal key={t.slug} delay={(i % 3) * 70}>
-              <Link
-                href={`/ac-types/${t.slug}`}
-                className="group flex h-full items-center gap-4 rounded-card border border-white/10 bg-white/[0.04] p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-plum-light/40 hover:bg-white/[0.07] on-navy"
-              >
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-white/8 text-plum-light ring-1 ring-white/10 transition-colors duration-300 group-hover:bg-plum group-hover:text-white group-hover:ring-plum">
-                  <t.icon aria-hidden="true" strokeWidth={1.6} className="h-6 w-6" />
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="block font-display text-[1rem] font-semibold text-white">{t.label}</span>
-                  <span className="block text-[0.85rem] text-white/60">{t.tagline}</span>
-                </span>
-                <ArrowRight className="shrink-0 text-plum-light transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Reveal>
-          ))}
+          {others.map((t, i) => {
+            const accent = exploreAccents[i % exploreAccents.length];
+            return (
+              <Reveal key={t.slug} delay={(i % 3) * 70}>
+                <Link
+                  href={`/ac-types/${t.slug}`}
+                  className="group flex h-full items-center gap-4 rounded-card border border-white/10 bg-white/[0.04] p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.07] on-navy"
+                >
+                  <span className={cn("grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-gradient-to-br ring-1 ring-white/10 transition-colors duration-300 group-hover:text-white group-hover:ring-transparent", accent)}>
+                    <t.icon aria-hidden="true" strokeWidth={1.6} className="h-6 w-6" />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block font-display text-[1rem] font-semibold text-white">{t.label}</span>
+                    <span className="block text-[0.85rem] text-white/60">{t.tagline}</span>
+                  </span>
+                  <ArrowRight className="shrink-0 text-white/40 transition-transform group-hover:translate-x-1 group-hover:text-white/70" />
+                </Link>
+              </Reveal>
+            );
+          })}
         </div>
       </Section>
 
@@ -150,7 +187,7 @@ export function AcTypeTemplate({ content }: { content: AcTypeContent }) {
       </Section>
 
       {/* Enquiry form */}
-      <section className="on-navy bg-navy-deep py-section">
+      <section className="on-navy bg-ink py-section">
         <Container>
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
             <div>

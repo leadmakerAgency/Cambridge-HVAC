@@ -128,7 +128,7 @@ export function Services() {
                       {item.title}
                     </h3>
                     <p className="mt-1.5 text-[0.95rem] text-slate">{item.body}</p>
-                    <span className="mt-3 inline-flex items-center gap-2 text-[0.925rem] font-medium text-plum">
+                    <span className="mt-3 inline-flex items-center gap-2 text-[0.925rem] font-semibold text-plum">
                       {item.cta}
                       <ArrowRight className="group-hover:translate-x-1" />
                     </span>

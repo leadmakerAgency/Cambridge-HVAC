@@ -18,7 +18,7 @@ export function MobileCallBar() {
       </a>
       <Link
         href="/get-a-quote"
-        className="flex h-14 items-center justify-center bg-plum text-[0.95rem] font-medium text-white transition-colors hover:bg-plum-deep"
+        className="flex h-14 items-center justify-center bg-plum text-[0.95rem] font-semibold text-white transition-colors hover:bg-plum-deep"
       >
         Get a quote
       </Link>

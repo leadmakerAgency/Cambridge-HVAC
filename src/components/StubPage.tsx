@@ -2,24 +2,16 @@ import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/layout/Section";
 import { ButtonLink } from "@/components/ui/Button";
 
-/**
- * Placeholder for a page whose content is still to be written. The route is
- * live and navigable; the body is intentionally empty beyond a short note and
- * the usual calls to action, so nothing here needs to be undone when the real
- * content lands.
- */
 export function StubPage({
   eyebrow,
   title,
-  crumb,
 }: {
   eyebrow: string;
   title: string;
-  crumb?: string;
 }) {
   return (
     <>
-      <PageHero eyebrow={eyebrow} title={title} crumb={crumb ?? title} />
+      <PageHero eyebrow={eyebrow} title={title} />
 
       <Section tone="white">
         <div className="mx-auto max-w-xl text-center">
