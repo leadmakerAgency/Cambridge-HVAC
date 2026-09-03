@@ -3,6 +3,8 @@ title: Why air conditioning still needs a yearly service
 slug: why-air-conditioning-needs-yearly-service
 date: 2026-08-27
 excerpt: A system that “still cools” can still be dirty, leaking or inefficient. What a yearly service covers and why it matters.
+image: /images/blog/yearly-service.jpg
+imageAlt: Gloved hands removing a filter from a wall-mounted air conditioning unit
 seoTitle: Why air conditioning needs a yearly service
 seoDescription: What an annual air conditioning service includes, why filters and refrigerant checks matter, and when to book before summer.
 draft: false

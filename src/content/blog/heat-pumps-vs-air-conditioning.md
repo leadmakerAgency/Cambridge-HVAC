@@ -3,6 +3,8 @@ title: Air-to-air heat pumps vs air conditioning — what is actually different?
 slug: heat-pumps-vs-air-conditioning
 date: 2026-09-01
 excerpt: Most modern “air conditioning” can heat as well as cool. How air-to-air heat pumps relate to the systems people usually mean by AC.
+image: /images/blog/heat-pumps-vs-ac.png
+imageAlt: An outdoor air-to-air heat pump condenser mounted on a brick wall
 seoTitle: Air-to-air heat pumps vs air conditioning
 seoDescription: Clear explanation of air-to-air heat pumps versus cooling-only air conditioning, and what that means for Cambridge homes.
 draft: false

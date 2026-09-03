@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/layout/Section";
@@ -32,28 +33,36 @@ export default function BlogIndexPage() {
           <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {posts.map((post) => (
               <li key={post.slug}>
-                <article className="flex h-full flex-col rounded-card bg-white p-6 shadow-card">
-                  <time
-                    dateTime={post.date}
-                    className="text-[0.82rem] font-medium tracking-wide text-slate uppercase"
-                  >
-                    {formatPostDate(post.date)}
-                  </time>
-                  <h2 className="mt-3 text-h3 text-navy-deep">
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="transition-colors hover:text-plum"
-                    >
-                      {post.title}
-                    </Link>
-                  </h2>
-                  <p className="mt-3 flex-1 text-[0.95rem] text-slate">{post.excerpt}</p>
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="mt-5 inline-flex items-center gap-1.5 text-[0.925rem] font-medium text-plum transition-colors hover:text-plum-deep"
-                  >
-                    Read article
-                    <ArrowRight className="h-3.5 w-3.5" />
+                <article className="group flex h-full flex-col overflow-hidden rounded-card bg-white shadow-card">
+                  <Link href={`/blog/${post.slug}`} className="flex h-full flex-col">
+                    {post.image && (
+                      <div className="relative aspect-[16/10] overflow-hidden">
+                        <Image
+                          src={post.image}
+                          alt={post.imageAlt ?? ""}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-cover transition-transform duration-500 ease-out-soft group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-navy/55 via-navy/10 to-transparent" />
+                      </div>
+                    )}
+                    <div className="flex flex-1 flex-col p-6">
+                      <time
+                        dateTime={post.date}
+                        className="text-[0.82rem] font-medium tracking-wide text-slate uppercase"
+                      >
+                        {formatPostDate(post.date)}
+                      </time>
+                      <h2 className="mt-3 text-h3 text-navy-deep transition-colors group-hover:text-plum">
+                        {post.title}
+                      </h2>
+                      <p className="mt-3 flex-1 text-[0.95rem] text-slate">{post.excerpt}</p>
+                      <span className="mt-5 inline-flex items-center gap-1.5 text-[0.925rem] font-medium text-plum transition-colors group-hover:text-plum-deep">
+                        Read article
+                        <ArrowRight className="h-3.5 w-3.5" />
+                      </span>
+                    </div>
                   </Link>
                 </article>
               </li>

@@ -20,10 +20,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = getPostBySlug(slug);
   if (!post) return {};
 
+  const title = post.seoTitle ?? post.title;
+  const description = post.seoDescription ?? post.excerpt;
+
   return {
-    title: post.seoTitle ?? post.title,
-    description: post.seoDescription ?? post.excerpt,
+    title,
+    description,
     alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      images: post.image
+        ? [{ url: post.image, alt: post.imageAlt ?? title }]
+        : undefined,
+    },
   };
 }
 
