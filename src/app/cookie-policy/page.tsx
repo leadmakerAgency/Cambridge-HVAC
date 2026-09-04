@@ -16,7 +16,6 @@ export default function Page() {
       <PageHero
         eyebrow="Legal"
         title="Cookie policy"
-        crumbs={[{ label: "Cookie Policy" }]}
         intro="Short and honest: this website does not set cookies to track you."
       />
 

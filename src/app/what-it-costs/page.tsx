@@ -81,7 +81,6 @@ export default function Page() {
       <PageHero
         eyebrow="What it costs"
         title="What air conditioning actually costs"
-        crumbs={[{ label: "What It Costs" }]}
         intro="There is no single price for air conditioning, because no two homes are the same. Here is an honest look at what drives the cost, and why a free survey gives you a better answer than a number over the phone."
       />
 

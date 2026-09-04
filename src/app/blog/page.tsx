@@ -23,7 +23,6 @@ export default function BlogIndexPage() {
       <PageHero
         eyebrow="Blog"
         title="Guides for cooler, more comfortable homes"
-        crumbs={[{ label: "Blog" }]}
         intro="Straight answers on air conditioning, heat pumps and looking after your system — written for Cambridge homes."
       />
 

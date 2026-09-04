@@ -16,7 +16,6 @@ export default function Page() {
       <PageHero
         eyebrow="Legal"
         title="Terms of use"
-        crumbs={[{ label: "Terms of Use" }]}
         intro="The terms that apply when you use this website. This is about the site itself, not a contract for any work we carry out."
       />
 

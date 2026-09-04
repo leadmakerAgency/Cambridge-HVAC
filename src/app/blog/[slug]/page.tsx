@@ -48,7 +48,6 @@ export default async function BlogPostPage({ params }: PageProps) {
         eyebrow="Blog"
         title={post.title}
         intro={post.excerpt}
-        crumbs={[{ label: "Blog", href: "/blog" }, { label: post.title }]}
       >
         <time dateTime={post.date} className="text-[0.9rem] text-white/60">
           {formatPostDate(post.date)}

@@ -31,7 +31,6 @@ export default function Page() {
       <PageHero
         eyebrow="About us"
         title="Air conditioning and heating, done properly"
-        crumbs={[{ label: "About" }]}
         intro="Cambridge HVAC installs, services and repairs air conditioning and heating for homes across Cambridge. Here is how we work, and what you can expect from us."
       />
 

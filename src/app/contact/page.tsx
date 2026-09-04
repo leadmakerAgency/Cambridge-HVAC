@@ -20,7 +20,6 @@ export default function Page() {
       <PageHero
         eyebrow="Contact"
         title="Get in touch"
-        crumbs={[{ label: "Contact" }]}
         intro="Call, email, or send us a message and we will get back to you. For a survey, the quickest route is a quick call or the quote form."
       />
 

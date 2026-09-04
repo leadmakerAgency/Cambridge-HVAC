@@ -16,7 +16,6 @@ export default function Page() {
       <PageHero
         eyebrow="Legal"
         title="Privacy policy"
-        crumbs={[{ label: "Privacy Policy" }]}
         intro="A plain explanation of what we collect through this website, why, and what your rights are."
       />
 
