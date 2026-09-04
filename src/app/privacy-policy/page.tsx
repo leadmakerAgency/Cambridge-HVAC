@@ -59,11 +59,11 @@ export default function Page() {
         <h2>How it is handled</h2>
         <p>
           Form submissions on this site are delivered by{" "}
-          <a href="https://web3forms.com" target="_blank" rel="noreferrer">
-            Web3Forms
+          <a href="https://formspree.io" target="_blank" rel="noreferrer">
+            Formspree
           </a>
           , a third-party service that forwards your submission to our enquiry inbox by email.
-          Web3Forms processes the submission only to deliver it to us, and we are not aware of it
+          Formspree processes the submission only to deliver it to us, and we are not aware of it
           being used for any other purpose. Once received, your details are handled by our team in
           the same way as any other customer enquiry.
         </p>

@@ -34,7 +34,7 @@ export function EnquiryForm({
   tone?: "light" | "dark";
 }) {
   const [errors, setErrors] = useState<Errors>({});
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "preview" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [serverError, setServerError] = useState("");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -71,7 +71,7 @@ export function EnquiryForm({
     const result = await submitEnquiry(payload);
 
     if (result.ok) {
-      setStatus(result.preview ? "preview" : "sent");
+      setStatus("sent");
       form.reset();
     } else {
       setStatus("error");
@@ -79,7 +79,7 @@ export function EnquiryForm({
     }
   }
 
-  if (status === "sent" || status === "preview") {
+  if (status === "sent") {
     return (
       <div
         className={cn(
@@ -113,12 +113,6 @@ export function EnquiryForm({
           </a>
           .
         </p>
-        {status === "preview" && (
-          <p className="mx-auto mt-4 max-w-sm rounded-control border border-[#dcb877] bg-[#faf3e2] px-3 py-2 text-[0.78rem] text-[#8a5a12]">
-            Preview mode: this submission wasn&rsquo;t delivered. Add the Web3Forms key before launch
-            to turn on real delivery.
-          </p>
-        )}
       </div>
     );
   }

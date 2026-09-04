@@ -38,7 +38,7 @@ export default function Page() {
         <h2>Forms</h2>
         <p>
           When you submit the quote or contact form, the information you type is sent directly to
-          our enquiry inbox using a third-party delivery service (Web3Forms). This is a one-off
+          our enquiry inbox using a third-party delivery service (Formspree). This is a one-off
           submission, not a cookie, and it is covered by our{" "}
           <a href="/privacy-policy">privacy policy</a>.
         </p>

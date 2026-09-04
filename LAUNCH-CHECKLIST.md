@@ -22,7 +22,7 @@ Governing spec: https://claude.ai/code/artifact/16382145-7de8-4cab-b50b-a372f191
 ## Build side
 
 - [ ] Every `LAUNCH:` marker in `src/config/site.ts` resolved; no placeholder strings remain
-- [ ] Web3Forms key set in `.env.local` and pointed at the live inbox
+- [ ] Formspree inbox (`maeybbel`) confirmed pointed at the live inbox
 - [ ] Test submission sent and confirmed received
 - [ ] Logo approved; favicon generated
 - [x] Open Graph card generated (`src/app/opengraph-image.tsx`) — regenerate if the palette or wordmark changes
