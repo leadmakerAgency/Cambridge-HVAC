@@ -138,7 +138,7 @@ export const multiSplit: AcTypeContent = {
 
 export const ducted: AcTypeContent = {
   slug: "ducted",
-  metaTitle: "Ducted & Concealed Air Conditioning in Cambridge",
+  metaTitle: "Ducted Air Conditioning in Cambridge",
   metaDescription:
     "Ducted air conditioning in Cambridge: whole-property cooling hidden above ceilings, delivered through discreet grilles. A near-invisible finish.",
   title: "Ducted & concealed air conditioning",
@@ -216,7 +216,7 @@ export const cassette: AcTypeContent = {
 
 export const floorStanding: AcTypeContent = {
   slug: "floor-standing",
-  metaTitle: "Floor-Standing Air Conditioning in Cambridge",
+  metaTitle: "Floor-Standing AC in Cambridge",
   metaDescription:
     "Floor-standing air conditioning in Cambridge: flexible cooling without high-level fixing, ideal for conservatories, period rooms and awkward walls.",
   title: "Floor-standing air conditioning",

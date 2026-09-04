@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { LegalArticle } from "@/components/legal/LegalArticle";
 import { site } from "@/config/site";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Terms of Use",
   description: `The terms of use for the ${site.businessName} website.`,
-  alternates: { canonical: "/terms" },
-};
+  path: "/terms",
+});
 
 export default function Page() {
   return (
@@ -15,6 +16,7 @@ export default function Page() {
       <PageHero
         eyebrow="Legal"
         title="Terms of use"
+        crumbs={[{ label: "Terms of Use" }]}
         intro="The terms that apply when you use this website. This is about the site itself, not a contract for any work we carry out."
       />
 

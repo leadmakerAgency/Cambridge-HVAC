@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { LegalArticle } from "@/components/legal/LegalArticle";
 import { site } from "@/config/site";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Privacy Policy",
   description: `How ${site.businessName} collects, uses and protects your personal data.`,
-  alternates: { canonical: "/privacy-policy" },
-};
+  path: "/privacy-policy",
+});
 
 export default function Page() {
   return (
@@ -15,6 +16,7 @@ export default function Page() {
       <PageHero
         eyebrow="Legal"
         title="Privacy policy"
+        crumbs={[{ label: "Privacy Policy" }]}
         intro="A plain explanation of what we collect through this website, why, and what your rights are."
       />
 

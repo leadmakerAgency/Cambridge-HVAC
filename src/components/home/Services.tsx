@@ -81,7 +81,7 @@ export function Services() {
               <Image
                 key={item.href}
                 src={item.photo}
-                alt={i === active ? item.alt : ""}
+                alt={item.alt}
                 fill
                 priority={i === 0}
                 sizes="(max-width: 1024px) 100vw, 50vw"

@@ -6,13 +6,14 @@ import { Section } from "@/components/layout/Section";
 import { ClosingCta } from "@/components/home/ClosingCta";
 import { ArrowRight } from "@/components/ui/Button";
 import { formatPostDate, getPublishedPosts } from "@/lib/blog";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Blog",
   description:
-    "Practical guides on air conditioning, heat pumps and servicing for Cambridge homes — from Cambridge HVAC.",
-  alternates: { canonical: "/blog" },
-};
+    "Practical guides on air conditioning, heat pumps and servicing for Cambridge homes, from Cambridge HVAC.",
+  path: "/blog",
+});
 
 export default function BlogIndexPage() {
   const posts = getPublishedPosts();
@@ -22,6 +23,7 @@ export default function BlogIndexPage() {
       <PageHero
         eyebrow="Blog"
         title="Guides for cooler, more comfortable homes"
+        crumbs={[{ label: "Blog" }]}
         intro="Straight answers on air conditioning, heat pumps and looking after your system — written for Cambridge homes."
       />
 

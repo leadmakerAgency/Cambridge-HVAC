@@ -81,8 +81,39 @@ export function faqPageSchema(faqs: { question: string; answer: ReactNode }[]) {
   };
 }
 
-/** BreadcrumbList schema for an interior page. */
-export function breadcrumbSchema(items: { name: string; path: string }[]) {
+/** BlogPosting schema for an individual article. */
+export function blogPostingSchema(post: {
+  title: string;
+  slug: string;
+  date: string;
+  excerpt: string;
+  image?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    dateModified: post.date,
+    url: `${site.url}/blog/${post.slug}`,
+    mainEntityOfPage: `${site.url}/blog/${post.slug}`,
+    ...(post.image ? { image: `${site.url}${post.image}` } : {}),
+    author: { "@type": "Organization", name: site.businessName },
+    publisher: {
+      "@type": "Organization",
+      name: site.businessName,
+      logo: { "@type": "ImageObject", url: `${site.url}/icon.png` },
+    },
+  };
+}
+
+/**
+ * BreadcrumbList schema for an interior page. The last entry (the current
+ * page) may omit `path` — Google's own guidance allows the final item to
+ * have no `item` URL, since linking a breadcrumb to itself is redundant.
+ */
+export function breadcrumbSchema(items: { name: string; path?: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -90,7 +121,7 @@ export function breadcrumbSchema(items: { name: string; path: string }[]) {
       "@type": "ListItem",
       position: i + 1,
       name: item.name,
-      item: `${site.url}${item.path}`,
+      ...(item.path ? { item: `${site.url}${item.path}` } : {}),
     })),
   };
 }

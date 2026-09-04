@@ -8,13 +8,15 @@ import { ButtonLink } from "@/components/ui/Button";
 import { IconShield, IconTag, IconLeaf, IconPin } from "@/components/ui/icons";
 import { site } from "@/config/site";
 import engineerPhoto from "@/components/home/assets/engineer.jpg";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About Us",
   description:
     "Cambridge HVAC installs and maintains air conditioning and heating across Cambridge. F‑Gas certified, fully insured, and straight with you.",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+  image: { url: engineerPhoto.src, alt: "An engineer checking an outdoor air conditioning unit" },
+});
 
 const values = [
   { icon: IconShield, title: "Certified and insured", body: "F‑Gas certified engineers and full insurance on every job. It is the first thing to check, so we lead with it.", tint: "bg-tint-sky", accent: "text-sky" },
@@ -29,6 +31,7 @@ export default function Page() {
       <PageHero
         eyebrow="About us"
         title="Air conditioning and heating, done properly"
+        crumbs={[{ label: "About" }]}
         intro="Cambridge HVAC installs, services and repairs air conditioning and heating for homes across Cambridge. Here is how we work, and what you can expect from us."
       />
 

@@ -3,12 +3,14 @@ import { ServiceTemplate } from "@/components/service/ServiceTemplate";
 import { maintenance } from "@/content/services";
 import { JsonLd } from "@/components/JsonLd";
 import { faqPageSchema } from "@/lib/schema";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: maintenance.metaTitle,
   description: maintenance.metaDescription,
-  alternates: { canonical: `/${maintenance.slug}` },
-};
+  path: `/${maintenance.slug}`,
+  image: { url: maintenance.photo.src, alt: maintenance.photoAlt },
+});
 
 export default function Page() {
   return (

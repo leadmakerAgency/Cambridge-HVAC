@@ -3,12 +3,14 @@ import { AcTypeTemplate } from "@/components/actype/AcTypeTemplate";
 import { heatPumps } from "@/content/actypes";
 import { JsonLd } from "@/components/JsonLd";
 import { faqPageSchema } from "@/lib/schema";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: heatPumps.metaTitle,
   description: heatPumps.metaDescription,
-  alternates: { canonical: `/ac-types/heat-pumps` },
-};
+  path: `/ac-types/heat-pumps`,
+  image: { url: heatPumps.image.src, alt: heatPumps.imageAlt },
+});
 
 export default function Page() {
   return (

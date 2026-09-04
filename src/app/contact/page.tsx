@@ -5,13 +5,14 @@ import { EnquiryForm } from "@/components/EnquiryForm";
 import { IconPhone, IconPin, IconClock } from "@/components/ui/icons";
 import { Mail } from "lucide-react";
 import { site } from "@/config/site";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact Us",
   description:
     "Get in touch with Cambridge HVAC for air conditioning and heating across Cambridge. Call, email, or request a free quote online.",
-  alternates: { canonical: "/contact" },
-};
+  path: "/contact",
+});
 
 export default function Page() {
   return (
@@ -19,6 +20,7 @@ export default function Page() {
       <PageHero
         eyebrow="Contact"
         title="Get in touch"
+        crumbs={[{ label: "Contact" }]}
         intro="Call, email, or send us a message and we will get back to you. For a survey, the quickest route is a quick call or the quote form."
       />
 

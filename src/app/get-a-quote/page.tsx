@@ -4,13 +4,14 @@ import { Section } from "@/components/layout/Section";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { IconShield, IconClipboard, IconInstall, IconPhone } from "@/components/ui/icons";
 import { site } from "@/config/site";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Get a Free Quote",
   description:
     "Request a free, no-obligation air conditioning or heating quote for your Cambridge home. Free survey, fixed price, F‑Gas certified.",
-  alternates: { canonical: "/get-a-quote" },
-};
+  path: "/get-a-quote",
+});
 
 const next = [
   { icon: IconClipboard, title: "We arrange a survey", body: "We call to book a convenient time to visit and measure up. No charge, no obligation." },
@@ -30,6 +31,7 @@ export default async function Page({
       <PageHero
         eyebrow="Get a quote"
         title="Get your free, fixed-price quote"
+        crumbs={[{ label: "Get a Quote" }]}
         intro="Tell us a little about your home and what you need. We will arrange a free survey and come back with a clear price, with no obligation to go ahead."
       />
 

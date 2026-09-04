@@ -73,7 +73,7 @@ export const airConditioning: ServiceContent = {
   slug: "air-conditioning-installation",
   metaTitle: "Air Conditioning Installation in Cambridge",
   metaDescription:
-    "Domestic air conditioning installation across Cambridge. Wall-mounted, multi-room and ducted systems, F‑Gas certified engineers, free survey and fixed-price quotes.",
+    "Domestic air conditioning installation in Cambridge: wall-mounted, multi-room and ducted systems. F‑Gas certified, free survey, fixed price.",
   eyebrow: "Air conditioning installation",
   title: "Air conditioning installation for Cambridge homes",
   intro:
@@ -177,7 +177,7 @@ export const airConditioning: ServiceContent = {
 
 export const heating: ServiceContent = {
   slug: "heating",
-  metaTitle: "Heating & Heat Pump Installation in Cambridge",
+  metaTitle: "Heating & Heat Pumps in Cambridge",
   metaDescription:
     "Heating installation and repair across Cambridge, including air-to-air heat pumps. F‑Gas certified engineers, free survey and fixed-price quotes.",
   eyebrow: "Heating services",

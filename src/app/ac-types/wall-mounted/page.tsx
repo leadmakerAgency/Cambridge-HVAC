@@ -3,12 +3,14 @@ import { AcTypeTemplate } from "@/components/actype/AcTypeTemplate";
 import { wallMounted } from "@/content/actypes";
 import { JsonLd } from "@/components/JsonLd";
 import { faqPageSchema } from "@/lib/schema";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: wallMounted.metaTitle,
   description: wallMounted.metaDescription,
-  alternates: { canonical: `/ac-types/wall-mounted` },
-};
+  path: `/ac-types/wall-mounted`,
+  image: { url: wallMounted.image.src, alt: wallMounted.imageAlt },
+});
 
 export default function Page() {
   return (

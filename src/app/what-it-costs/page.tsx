@@ -7,13 +7,14 @@ import { Accordion } from "@/components/ui/Accordion";
 import { ButtonLink } from "@/components/ui/Button";
 import { IconCheck } from "@/components/service/IconCheck";
 import { Home, Wind, Route, BrickWall, Plug, Construction } from "lucide-react";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "What Air Conditioning Costs",
   description:
-    "What drives the cost of air conditioning installation in the UK, explained honestly. Number of rooms, unit type, pipe runs, access and more. Free survey, fixed price.",
-  alternates: { canonical: "/what-it-costs" },
-};
+    "What drives the cost of air conditioning installation in the UK: room count, unit type, pipe runs and access. Free survey, fixed price.",
+  path: "/what-it-costs",
+});
 
 const drivers = [
   { icon: Home, title: "Number of rooms", body: "One room or the whole house makes the biggest difference. More indoor units and more pipework means more materials and time.", tint: "bg-tint-sky", accent: "text-sky" },
@@ -80,6 +81,7 @@ export default function Page() {
       <PageHero
         eyebrow="What it costs"
         title="What air conditioning actually costs"
+        crumbs={[{ label: "What It Costs" }]}
         intro="There is no single price for air conditioning, because no two homes are the same. Here is an honest look at what drives the cost, and why a free survey gives you a better answer than a number over the phone."
       />
 

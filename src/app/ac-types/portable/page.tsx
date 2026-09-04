@@ -3,12 +3,14 @@ import { AcTypeTemplate } from "@/components/actype/AcTypeTemplate";
 import { portable } from "@/content/actypes";
 import { JsonLd } from "@/components/JsonLd";
 import { faqPageSchema } from "@/lib/schema";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: portable.metaTitle,
   description: portable.metaDescription,
-  alternates: { canonical: `/ac-types/portable` },
-};
+  path: `/ac-types/portable`,
+  image: { url: portable.image.src, alt: portable.imageAlt },
+});
 
 export default function Page() {
   return (

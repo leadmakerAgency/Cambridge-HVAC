@@ -5,7 +5,7 @@ date: 2026-08-20
 excerpt: One room or several? How wall-mounted and multi-split systems differ, and which tends to suit Cambridge houses and flats.
 image: /images/blog/wall-mounted-vs-multi-split.jpg
 imageAlt: A wall-mounted indoor air conditioning unit
-seoTitle: Wall-mounted vs multi-split air conditioning
+seoTitle: Wall-Mounted vs Multi-Split AC
 seoDescription: Compare wall-mounted and multi-split air conditioning for Cambridge homes — rooms covered, outdoor space, and when each option makes sense.
 draft: false
 ---

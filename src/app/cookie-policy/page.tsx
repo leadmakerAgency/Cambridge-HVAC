@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { LegalArticle } from "@/components/legal/LegalArticle";
 import { site } from "@/config/site";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Cookie Policy",
   description: `${site.businessName} does not use cookies for analytics, advertising or tracking.`,
-  alternates: { canonical: "/cookie-policy" },
-};
+  path: "/cookie-policy",
+});
 
 export default function Page() {
   return (
@@ -15,6 +16,7 @@ export default function Page() {
       <PageHero
         eyebrow="Legal"
         title="Cookie policy"
+        crumbs={[{ label: "Cookie Policy" }]}
         intro="Short and honest: this website does not set cookies to track you."
       />
 

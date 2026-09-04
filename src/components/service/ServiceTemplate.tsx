@@ -30,7 +30,12 @@ const stepAccents = [
 export function ServiceTemplate({ content }: { content: ServiceContent }) {
   return (
     <>
-      <PageHero eyebrow={content.eyebrow} title={content.title} intro={content.intro}>
+      <PageHero
+        eyebrow={content.eyebrow}
+        title={content.title}
+        intro={content.intro}
+        crumbs={[{ label: "Services", href: "/#services" }, { label: content.title }]}
+      >
         <div className="flex flex-wrap gap-3">
           <ButtonLink href="/get-a-quote" size="lg">
             Get a free quote

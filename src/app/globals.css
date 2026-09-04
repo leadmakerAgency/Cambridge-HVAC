@@ -24,20 +24,20 @@
 
   /* --- Action colour. Every primary call to action on the site is this
          green: one colour, one meaning, unmissable on navy and on white. --- */
-  --color-spring: #1eae65;
+  --color-spring: #147645;
   --color-spring-deep: #17914f;
   --color-spring-light: #5fd79b;
 
   /* --- Supporting accent family. Sections rotate through these so the site
          reads as a palette rather than a two-colour scheme. Each is picked to
          hold ~4.5:1 on white and pairs with a tint below. --- */
-  --color-sky: #2a6fc9;
+  --color-sky: #2766b9;
   --color-sky-light: #85b6f2;
-  --color-teal: #0d8f9c;
+  --color-teal: #0a737d;
   --color-teal-light: #6fd2da;
-  --color-sun: #b9791a;
+  --color-sun: #956115;
   --color-sun-light: #f0bf62;
-  --color-coral: #cf5340;
+  --color-coral: #b6402e;
   --color-coral-light: #f4a08e;
   --color-violet: #6a4bc4;
   --color-violet-light: #b6a4f0;

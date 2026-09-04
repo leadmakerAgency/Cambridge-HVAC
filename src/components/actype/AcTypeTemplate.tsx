@@ -44,7 +44,12 @@ export function AcTypeTemplate({ content }: { content: AcTypeContent }) {
 
   return (
     <>
-      <PageHero eyebrow="AC Types" title={content.title} intro={content.tagline}>
+      <PageHero
+        eyebrow="AC Types"
+        title={content.title}
+        intro={content.tagline}
+        crumbs={[{ label: "AC Types" }, { label: content.title }]}
+      >
         <div className="flex flex-wrap gap-3">
           <ButtonLink href="/get-a-quote" size="lg">
             Get a free quote

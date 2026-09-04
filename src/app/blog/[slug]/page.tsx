@@ -5,6 +5,9 @@ import ReactMarkdown from "react-markdown";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/layout/Section";
 import { ClosingCta } from "@/components/home/ClosingCta";
+import { JsonLd } from "@/components/JsonLd";
+import { blogPostingSchema } from "@/lib/schema";
+import { pageMetadata } from "@/lib/metadata";
 import { formatPostDate, getPostBySlug, getPublishedPosts } from "@/lib/blog";
 
 type PageProps = {
@@ -23,19 +26,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = post.seoTitle ?? post.title;
   const description = post.seoDescription ?? post.excerpt;
 
-  return {
+  return pageMetadata({
     title,
     description,
-    alternates: { canonical: `/blog/${post.slug}` },
-    openGraph: {
-      title,
-      description,
-      type: "article",
-      images: post.image
-        ? [{ url: post.image, alt: post.imageAlt ?? title }]
-        : undefined,
-    },
-  };
+    path: `/blog/${post.slug}`,
+    type: "article",
+    publishedTime: post.date,
+    image: post.image ? { url: post.image, alt: post.imageAlt ?? title } : undefined,
+  });
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
@@ -45,10 +43,12 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <>
+      <JsonLd data={blogPostingSchema(post)} />
       <PageHero
         eyebrow="Blog"
         title={post.title}
         intro={post.excerpt}
+        crumbs={[{ label: "Blog", href: "/blog" }, { label: post.title }]}
       >
         <time dateTime={post.date} className="text-[0.9rem] text-white/60">
           {formatPostDate(post.date)}
@@ -70,7 +70,24 @@ export default async function BlogPostPage({ params }: PageProps) {
         )}
 
         <div className="article-body">
-          <ReactMarkdown>{post.body}</ReactMarkdown>
+          <ReactMarkdown
+            components={{
+              a: ({ href, children, node, ...props }) => {
+                const external = /^https?:\/\//.test(href ?? "");
+                return (
+                  <a
+                    href={href}
+                    {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                    {...props}
+                  >
+                    {children}
+                  </a>
+                );
+              },
+            }}
+          >
+            {post.body}
+          </ReactMarkdown>
         </div>
       </Section>
 

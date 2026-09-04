@@ -11,6 +11,7 @@ import { HomeFaq, faqs } from "@/components/home/HomeFaq";
 import { ClosingCta } from "@/components/home/ClosingCta";
 import { JsonLd } from "@/components/JsonLd";
 import { faqPageSchema } from "@/lib/schema";
+import { pageMetadata } from "@/lib/metadata";
 
 /**
  * Homepage. PDR §6.
@@ -24,12 +25,12 @@ import { faqPageSchema } from "@/lib/schema";
  * (01 header, 11 footer and 12 mobile call bar live in the shared layout.)
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Air Conditioning Installation in Cambridge",
   description:
     "F‑Gas certified air conditioning installation, heating and servicing for homes across Cambridge. Free survey, fixed-price quotes, fully insured.",
-  alternates: { canonical: "/" },
-};
+  path: "/",
+});
 
 export default function HomePage() {
   return (
