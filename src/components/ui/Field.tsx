@@ -50,7 +50,7 @@ function Wrapper({
       {children}
 
       {hint && !error && (
-        <p className={cn("text-[0.78rem]", tone === "dark" ? "text-white/55" : "text-slate/80")}>
+        <p className={cn("text-[0.78rem]", tone === "dark" ? "text-white/60" : "text-slate")}>
           {hint}
         </p>
       )}

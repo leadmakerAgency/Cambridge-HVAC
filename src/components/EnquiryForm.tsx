@@ -178,7 +178,7 @@ export function EnquiryForm({
         </p>
       </div>
 
-      <p className={cn("text-[0.78rem]", tone === "dark" ? "text-white/45" : "text-slate/70")}>
+      <p className={cn("text-[0.78rem]", tone === "dark" ? "text-white/60" : "text-slate")}>
         No obligation. We&rsquo;ll only use your details to respond to your enquiry.
       </p>
     </form>

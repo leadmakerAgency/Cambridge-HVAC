@@ -20,11 +20,13 @@ import {
   BadgePoundSterling,
   Leaf,
 } from "lucide-react";
-import wallClean from "./covers/wall-clean.jpg";
-import outdoorClean from "./covers/outdoor-clean.jpg";
-import officeA from "./actypes/office-a.jpg";
-import officeB from "./actypes/office-b.jpg";
-import living from "./actypes/living.jpg";
+import wallMountedPhoto from "./actypes/wall-mounted.png";
+import multiSplitPhoto from "./actypes/multi-split.png";
+import ductedPhoto from "./actypes/ducted.png";
+import cassettePhoto from "./actypes/cassette.png";
+import floorStandingPhoto from "./actypes/floor-standing.png";
+import portablePhoto from "./actypes/portable.png";
+import heatPumpPhoto from "./actypes/heat-pump.png";
 
 export type AcTypeContent = {
   slug: string;
@@ -63,8 +65,8 @@ export const wallMounted: AcTypeContent = {
   title: "Wall-mounted air conditioning",
   tagline:
     "The UK's most popular system: a discreet indoor unit that cools and heats a single room quietly and efficiently.",
-  image: wallClean,
-  imageAlt: "A wall-mounted air conditioning unit in a modern room",
+  image: wallMountedPhoto,
+  imageAlt: "A wall-mounted air conditioning unit blowing cool air into a modern room",
   whatIsHeading: "What is a wall-mounted air conditioning unit?",
   whatIs: [
     "A wall-mounted unit is the classic split system: a slim indoor unit fixed high on a wall, paired with an outdoor condenser. It is the most popular choice in UK homes, and for good reason, it is efficient, quiet and quick to install.",
@@ -103,8 +105,8 @@ export const multiSplit: AcTypeContent = {
   title: "Multi-split systems",
   tagline:
     "One outdoor unit, several indoor units, cooling multiple rooms independently without a condenser for each one.",
-  image: outdoorClean,
-  imageAlt: "An outdoor air conditioning condenser unit",
+  image: multiSplitPhoto,
+  imageAlt: "Diagram of a multi-split system with one outdoor unit feeding indoor units in the living area, home office and bedroom",
   whatIsHeading: "What is a multi-split system?",
   whatIs: [
     "A multi-split system runs several indoor units from a single outdoor condenser. Each indoor unit is controlled independently, so different rooms can be set to different temperatures, or switched off entirely when not in use.",
@@ -142,8 +144,8 @@ export const ducted: AcTypeContent = {
   title: "Ducted & concealed air conditioning",
   tagline:
     "Whole-property cooling, hidden from view. Units concealed above ceilings deliver air through discreet grilles.",
-  image: officeA,
-  imageAlt: "A modern interior cooled by concealed ducted air conditioning",
+  image: ductedPhoto,
+  imageAlt: "Ceiling-recessed slot diffusers distributing air across an open-plan living room, with a duct diagram inset",
   whatIsHeading: "How does ducted air conditioning work?",
   whatIs: [
     "A ducted system hides the indoor unit above a ceiling or in a bulkhead, and distributes cooled air through a network of ducts to discreet grilles in each room. All you see is the grille, so the system all but disappears.",
@@ -181,8 +183,8 @@ export const cassette: AcTypeContent = {
   title: "Cassette air conditioning",
   tagline:
     "Ceiling-recessed with four-way airflow, cassette units cool larger open spaces evenly and discreetly.",
-  image: officeB,
-  imageAlt: "An open-plan space cooled by ceiling cassette air conditioning",
+  image: cassettePhoto,
+  imageAlt: "Two ceiling cassette air conditioning units cooling a living room, with a four-way dispersal grille diagram inset",
   whatIsHeading: "How does a cassette air conditioning unit work?",
   whatIs: [
     "A cassette unit sits recessed into a suspended ceiling, with only its slim square face on show. It draws air in through the centre and pushes cooled air out in four directions, spreading it evenly across a large space.",
@@ -220,8 +222,8 @@ export const floorStanding: AcTypeContent = {
   title: "Floor-standing air conditioning",
   tagline:
     "Flexible cooling without high-level fixing, a floor-mounted unit that works where wall or ceiling fixing is not practical.",
-  image: living,
-  imageAlt: "A living room suited to a floor-standing air conditioning unit",
+  image: floorStandingPhoto,
+  imageAlt: "A floor-standing air conditioning unit in a bright living room",
   whatIsHeading: "What is a floor-standing air conditioning unit?",
   whatIs: [
     "A floor-standing unit sits at low level rather than being fixed high on a wall or in a ceiling. It works exactly like other split systems, with an outdoor condenser, but the indoor unit stands on or near the floor.",
@@ -259,8 +261,8 @@ export const portable: AcTypeContent = {
   title: "Portable air conditioning",
   tagline:
     "Plug-in units offer temporary cooling with no installation, useful as a stop-gap, though a fixed system is quieter and far more efficient.",
-  image: living,
-  imageAlt: "A living room where portable air conditioning might be used",
+  image: portablePhoto,
+  imageAlt: "A portable air conditioning unit venting through a window in a living room",
   whatIsHeading: "What is a portable air conditioning unit?",
   whatIs: [
     "A portable unit is a free-standing box on castors that you plug into a socket and vent through a window using a flexible hose. It needs no installation, which makes it a quick fix for a heatwave or a room you only need to cool occasionally.",
@@ -298,8 +300,8 @@ export const heatPumps: AcTypeContent = {
   title: "Air-to-air heat pumps",
   tagline:
     "Heating and cooling from one modern system, cooling in summer and efficient, low-cost warmth through the cooler months.",
-  image: outdoorClean,
-  imageAlt: "An outdoor heat pump condenser unit",
+  image: heatPumpPhoto,
+  imageAlt: "An outdoor heat pump condenser beside a house, with an indoor wall-mounted unit visible through the window",
   whatIsHeading: "What is an air-to-air heat pump?",
   whatIs: [
     "An air-to-air heat pump is an air conditioning system that also runs in reverse to heat your home. In summer it cools; in the cooler months it moves warmth from the outside air into your rooms, efficiently and at low cost.",

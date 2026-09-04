@@ -72,7 +72,7 @@ export function QuotePanel() {
           </Button>
         </div>
 
-        <p className="mt-4 text-center text-[0.8rem] text-slate/80">
+        <p className="mt-4 text-center text-[0.8rem] text-slate">
           No obligation. We&rsquo;ll never share your details.
         </p>
       </form>

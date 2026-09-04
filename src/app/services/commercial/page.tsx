@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { ServiceTemplate } from "@/components/service/ServiceTemplate";
 import { commercial } from "@/content/services";
+import { JsonLd } from "@/components/JsonLd";
+import { faqPageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: commercial.metaTitle,
@@ -9,5 +11,10 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <ServiceTemplate content={commercial} />;
+  return (
+    <>
+      <JsonLd data={faqPageSchema(commercial.faqs)} />
+      <ServiceTemplate content={commercial} />
+    </>
+  );
 }

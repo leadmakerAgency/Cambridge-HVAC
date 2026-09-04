@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { AcTypeTemplate } from "@/components/actype/AcTypeTemplate";
 import { heatPumps } from "@/content/actypes";
+import { JsonLd } from "@/components/JsonLd";
+import { faqPageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: heatPumps.metaTitle,
@@ -9,5 +11,10 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <AcTypeTemplate content={heatPumps} />;
+  return (
+    <>
+      <JsonLd data={faqPageSchema(heatPumps.faqs)} />
+      <AcTypeTemplate content={heatPumps} />
+    </>
+  );
 }

@@ -39,7 +39,7 @@ export function Footer() {
 
           {footerNav.map((group) => (
             <nav key={group.heading} aria-label={group.heading} className="flex flex-col gap-3">
-              <h2 className="eyebrow text-white/45">{group.heading}</h2>
+              <h2 className="eyebrow text-white/60">{group.heading}</h2>
               <ul className="flex flex-col gap-2.5">
                 {group.links.map((link) => (
                   <li key={link.href}>
@@ -67,7 +67,7 @@ export function Footer() {
           </p>
         </div>
 
-        <div className="mt-3 flex flex-col gap-3 text-[0.83rem] text-white/40">
+        <div className="mt-3 flex flex-col gap-3 text-[0.83rem] text-white/60">
           <p>
             Opening hours:{" "}
             {site.openingHours

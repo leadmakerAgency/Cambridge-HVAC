@@ -69,7 +69,11 @@ export function Logo({
   if (!href) return content;
 
   return (
-    <Link href={href} className="inline-flex rounded-sm" aria-label={`${site.businessName}, home`}>
+    // No aria-label here: the visible "CAMBRIDGE" / "HVAC" text plus the
+    // sr-only span below already give this link an accessible name that
+    // contains its visible text (WCAG 2.5.3) — an overriding aria-label
+    // would hide that visible text from the computed name instead.
+    <Link href={href} className="inline-flex rounded-sm">
       {content}
     </Link>
   );

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { AcTypeTemplate } from "@/components/actype/AcTypeTemplate";
 import { cassette } from "@/content/actypes";
+import { JsonLd } from "@/components/JsonLd";
+import { faqPageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: cassette.metaTitle,
@@ -9,5 +11,10 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <AcTypeTemplate content={cassette} />;
+  return (
+    <>
+      <JsonLd data={faqPageSchema(cassette.faqs)} />
+      <AcTypeTemplate content={cassette} />
+    </>
+  );
 }

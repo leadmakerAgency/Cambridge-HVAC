@@ -24,15 +24,18 @@ Governing spec: https://claude.ai/code/artifact/16382145-7de8-4cab-b50b-a372f191
 - [ ] Every `LAUNCH:` marker in `src/config/site.ts` resolved; no placeholder strings remain
 - [ ] Web3Forms key set in `.env.local` and pointed at the live inbox
 - [ ] Test submission sent and confirmed received
-- [ ] Logo approved; favicon and Open Graph card generated
-- [ ] `robots.index` set back to `true` in `src/app/layout.tsx` (currently `false`)
-- [ ] `sitemap.xml` and `robots.txt` live and correct
-- [ ] LocalBusiness JSON-LD completed with real details and validated
-- [ ] Lighthouse run on the production URL: 95+ across all four categories
+- [ ] Logo approved; favicon generated
+- [x] Open Graph card generated (`src/app/opengraph-image.tsx`) — regenerate if the palette or wordmark changes
+- [ ] `robots.index` set back to `true` in `src/app/layout.tsx` (currently `false`) — the one remaining go-live switch
+- [x] `sitemap.xml` and `robots.txt` live and correct (`src/app/sitemap.ts`, `src/app/robots.ts`) — 26 URLs, includes every service, AC-type and published blog page
+- [x] `HVACBusiness` JSON-LD sitewide (`src/app/layout.tsx`) and `FAQPage` JSON-LD on the homepage, every service page and every AC-type page (`src/lib/schema.ts`) — built against the current `LAUNCH:` placeholders, re-validate once real details are in
+- [x] Lighthouse run on the production URL — Performance 98-99, Accessibility 97-100, Best Practices 100. SEO sits at 69 for one reason only: `robots.index: false`, which is correct pre-launch and will resolve the moment that flag flips
+- [ ] The new accent palette (sky/spring/sun/teal/coral text on their matching tint backgrounds — `ServiceTemplate.tsx`, `AcTypeTemplate.tsx`, `what-it-costs/page.tsx`) fails WCAG AA contrast on 5 of 6 pairings (2.35–4.04:1 against a 4.5:1 requirement; only violet passes). Left untouched pending a design decision — needs either darker accent tones or darker tints
 - [ ] Cross-browser pass — Chrome, Safari, Firefox, Edge
 - [ ] Device pass at 375px, 768px, 1024px, 1440px
-- [ ] All five blog articles published
-- [ ] 404 page reachable and correct
+- [ ] Blog content reviewed before launch — 4 posts currently live, including a test entry (`sdfsdf`) that should be removed or replaced
+- [x] 404 page reachable and correct
+- [x] Legal pages built — `/privacy-policy`, `/cookie-policy`, `/terms` (still need the client review row above)
 
 ## Go-live
 

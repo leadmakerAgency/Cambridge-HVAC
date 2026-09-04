@@ -8,7 +8,7 @@ import { site } from "@/config/site";
  * rich results in Part 5. Every answer stays inside the claims boundary (§11):
  * no prices, no fixed warranty length on our own labour.
  */
-const faqs = [
+export const faqs = [
   {
     question: "How much does air conditioning installation cost?",
     answer: (

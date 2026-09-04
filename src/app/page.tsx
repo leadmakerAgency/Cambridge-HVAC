@@ -7,8 +7,10 @@ import { HowItWorks } from "@/components/home/HowItWorks";
 import { WhatYouGet } from "@/components/home/WhatYouGet";
 import { HowWeWork } from "@/components/home/HowWeWork";
 import { ServiceArea } from "@/components/home/ServiceArea";
-import { HomeFaq } from "@/components/home/HomeFaq";
+import { HomeFaq, faqs } from "@/components/home/HomeFaq";
 import { ClosingCta } from "@/components/home/ClosingCta";
+import { JsonLd } from "@/components/JsonLd";
+import { faqPageSchema } from "@/lib/schema";
 
 /**
  * Homepage. PDR §6.
@@ -32,6 +34,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={faqPageSchema(faqs)} />
       <Hero />
       <CredentialStrip />
       <Services />
