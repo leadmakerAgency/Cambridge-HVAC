@@ -52,8 +52,8 @@ export default function Page() {
 
         <h2>Questions</h2>
         <p>
-          If you have any questions about this policy, contact us at{" "}
-          <a href={`mailto:${site.email}`}>{site.email}</a>.
+          If you have any questions about this policy, call us on{" "}
+          <a href={site.phone.href}>{site.phone.display}</a>.
         </p>
       </LegalArticle>
     </>

@@ -23,8 +23,8 @@ export function Hero() {
       </div>
 
       <Container className="relative pb-20 sm:pb-24">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-          <div>
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:items-start lg:gap-12">
+          <div className="lg:pt-4">
             <p className="eyebrow text-plum-light">
               Air conditioning installation &middot; {site.serviceArea.primary}
             </p>

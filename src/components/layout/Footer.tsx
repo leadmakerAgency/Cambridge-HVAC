@@ -28,12 +28,6 @@ export function Footer() {
                 <PhoneIcon className="h-4 w-4" />
                 {site.phone.display}
               </a>
-              <a
-                href={`mailto:${site.email}`}
-                className="w-fit text-white/75 transition-colors hover:text-white"
-              >
-                {site.email}
-              </a>
             </div>
           </div>
 
@@ -59,8 +53,7 @@ export function Footer() {
         {/* Credential line. PDR §11, the only claims permitted at launch. */}
         <div className="mt-14 flex flex-col gap-4 border-t border-white/12 pt-8 text-[0.83rem] text-white/50 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            F-Gas certified ({site.credentials.fgasBody}, reg. {site.credentials.fgasNumber}).{" "}
-            {site.credentials.insurance}.
+            F-Gas certified. {site.credentials.insurance}.
           </p>
           <p>
             &copy; {year} {site.legalName}

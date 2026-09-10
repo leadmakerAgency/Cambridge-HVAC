@@ -97,15 +97,14 @@ export default function Page() {
             <h2 className="mt-3 text-h2 text-white">Qualified for the work</h2>
             <p className="measure mt-4 text-white/70">
               Air conditioning contains fluorinated refrigerant gases, and by law only F‑Gas certified
-              engineers may handle them. We are certified with {site.credentials.fgasBody}, and
-              carry full insurance on every job.
+              engineers may handle them. We are F‑Gas certified and carry full insurance on every job.
             </p>
           </div>
           <ul className="grid gap-4 sm:grid-cols-2">
             <li className="rounded-card border border-white/12 bg-white/5 p-5 on-navy">
               <h3 className="font-display text-[1.05rem] font-semibold text-white">F‑Gas certified</h3>
               <p className="mt-1.5 text-[0.9rem] text-white/70">
-                {site.credentials.fgasBody}, reg. {site.credentials.fgasNumber}.
+                Refrigerant handled by certified engineers, as the law requires.
               </p>
             </li>
             <li className="rounded-card border border-white/12 bg-white/5 p-5 on-navy">

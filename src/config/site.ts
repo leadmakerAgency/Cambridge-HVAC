@@ -3,12 +3,9 @@
  * THE ONLY FILE THAT HOLDS BUSINESS DETAILS.  PDR §14.
  * ============================================================================
  *
- * No phone number, email address, opening hour or credential is hard-coded
- * anywhere else in this project. Going live is a matter of replacing the
- * values below and working through LAUNCH-CHECKLIST.md.
- *
- * Every value marked `LAUNCH:` is a realistic-looking placeholder chosen so
- * the design reads correctly in review. None of them are real.
+ * No phone number, opening hour or credential is hard-coded anywhere else
+ * in this project. Going live is a matter of replacing the values below
+ * and working through LAUNCH-CHECKLIST.md.
  */
 
 export const site = {
@@ -21,14 +18,9 @@ export const site = {
   tagline: "Air conditioning and heating for Cambridge homes",
 
   phone: {
-    /** LAUNCH: real number required. */
-    display: "01223 000 000",
-    /** LAUNCH: must match `display`, E.164 format. */
-    href: "tel:+441223000000",
+    display: "+44 7397 601087",
+    href: "tel:+447397601087",
   },
-
-  /** LAUNCH: monitored inbox. Form delivery points here (PDR §8). */
-  email: "hello@cambridge-hvac.co.uk",
 
   /**
    * LAUNCH: hours as actually operated.
@@ -63,12 +55,8 @@ export const site = {
   /**
    * PDR §11, the ONLY credentials permitted at launch.
    * Nothing may be added here without a source to back it.
-   * LAUNCH: real F-Gas registration number and certifying body.
    */
   credentials: {
-    fgasNumber: "REF-0000000",
-    fgasBody: "REFCOM",
-    /** LAUNCH: wording confirmed with the client's insurance broker. */
     insurance: "Fully insured, including £5m public liability",
   },
 

@@ -81,8 +81,8 @@ export default function Page() {
 
         <h2>Contact</h2>
         <p>
-          Questions about these terms can be sent to{" "}
-          <a href={`mailto:${site.email}`}>{site.email}</a>.
+          Questions about these terms can be sent by calling{" "}
+          <a href={site.phone.href}>{site.phone.display}</a>.
         </p>
       </LegalArticle>
     </>

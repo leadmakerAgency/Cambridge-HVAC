@@ -34,9 +34,7 @@ export function HowWeWork() {
               <IconShield className="h-7 w-7" />
             </span>
             <p className="text-[0.95rem] text-white/90">
-              <span className="font-semibold text-white">
-                F‑Gas certified ({site.credentials.fgasBody}).
-              </span>{" "}
+              <span className="font-semibold text-white">F‑Gas certified.</span>{" "}
               Refrigerant handled safely and legally, so your warranty stays valid and the work is
               done to standard.
             </p>
@@ -47,8 +45,7 @@ export function HowWeWork() {
           <p className="measure text-slate">
             Air conditioning uses fluorinated refrigerant gases, and by law only F‑Gas certified
             engineers may handle them. It is the single most important thing to check before letting
-            anyone install a system in your home, so we lead with it, and we&rsquo;re happy to show
-            our credentials.
+            anyone install a system in your home, so we lead with it.
           </p>
 
           <ul className="mt-6 grid gap-4 sm:grid-cols-2">

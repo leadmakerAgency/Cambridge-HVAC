@@ -26,13 +26,17 @@ export function EnquiryForm({
   defaultPostcode = "",
   compact = false,
   tone = "light",
+  size = "default",
 }: {
   source: string;
   defaultService?: string;
   defaultPostcode?: string;
   compact?: boolean;
   tone?: "light" | "dark";
+  size?: "default" | "hero";
 }) {
+  const hero = size === "hero";
+  const fieldSize = hero ? "sm" : "default";
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [serverError, setServerError] = useState("");
@@ -83,13 +87,23 @@ export function EnquiryForm({
     return (
       <div
         className={cn(
-          "rounded-card border p-8 text-center",
-          tone === "dark" ? "border-white/15 bg-white/5" : "border-rule bg-white shadow-card",
+          "text-center",
+          hero
+            ? "py-4"
+            : cn(
+                "rounded-card border p-8",
+                tone === "dark" ? "border-white/15 bg-white/5" : "border-rule bg-white shadow-card",
+              ),
         )}
         role="status"
       >
-        <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-plum/10 text-plum">
-          <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7">
+        <span
+          className={cn(
+            "mx-auto grid place-items-center rounded-full bg-plum/10 text-plum",
+            hero ? "h-10 w-10" : "h-14 w-14",
+          )}
+        >
+          <svg viewBox="0 0 24 24" fill="none" className={hero ? "h-5 w-5" : "h-7 w-7"}>
             <path
               d="m5 12.5 4.5 4.5L19 7"
               stroke="currentColor"
@@ -99,10 +113,22 @@ export function EnquiryForm({
             />
           </svg>
         </span>
-        <h3 className={cn("mt-5 font-display text-h3", tone === "dark" ? "text-white" : "text-navy")}>
+        <h3
+          className={cn(
+            "font-display",
+            hero ? "mt-3 text-[1.05rem]" : "mt-5 text-h3",
+            tone === "dark" ? "text-white" : "text-navy",
+          )}
+        >
           Thanks, we&rsquo;ve got it.
         </h3>
-        <p className={cn("mx-auto mt-2 max-w-sm", tone === "dark" ? "text-white/70" : "text-slate")}>
+        <p
+          className={cn(
+            "mx-auto mt-2 max-w-sm",
+            hero ? "text-[0.82rem] leading-snug" : "",
+            tone === "dark" ? "text-white/70" : "text-slate",
+          )}
+        >
           We&rsquo;ll be in touch shortly to arrange your free survey. For anything urgent, call us
           on{" "}
           <a
@@ -118,7 +144,22 @@ export function EnquiryForm({
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="flex flex-col gap-4" aria-label="Enquiry form">
+    <form
+      onSubmit={onSubmit}
+      noValidate
+      className={cn("flex flex-col", hero ? "gap-3" : "gap-4")}
+      aria-label="Enquiry form"
+    >
+      {hero && (
+        <div>
+          <h2 className="font-display text-[1.15rem] font-semibold tracking-tight text-navy">
+            Send us a message
+          </h2>
+          <p className="mt-1 text-[0.8rem] leading-snug text-slate">
+            Fill this in and we will be in touch.
+          </p>
+        </div>
+      )}
       {/* Honeypot: hidden from people, catches bots. */}
       <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
         <label>
@@ -127,20 +168,62 @@ export function EnquiryForm({
         </label>
       </div>
 
-      <div className={cn("grid gap-4", compact ? "" : "sm:grid-cols-2")}>
-        <Input label="Your name" name="name" autoComplete="name" required tone={tone} error={errors.name} />
-        <Input label="Phone" name="phone" type="tel" autoComplete="tel" required tone={tone} error={errors.phone} />
-        <Input label="Email" name="email" type="email" autoComplete="email" required tone={tone} error={errors.email} />
+      <div className={cn("grid", hero ? "gap-3 sm:grid-cols-2" : compact ? "gap-4" : "gap-4 sm:grid-cols-2")}>
+        <Input
+          label="Your name"
+          name="name"
+          autoComplete="name"
+          required
+          tone={tone}
+          error={errors.name}
+          size={fieldSize}
+        />
+        <Input
+          label="Phone"
+          name="phone"
+          type="tel"
+          autoComplete="tel"
+          required
+          tone={tone}
+          error={errors.phone}
+          size={fieldSize}
+        />
+        <Input
+          label="Email"
+          name="email"
+          type="email"
+          autoComplete="email"
+          required
+          tone={tone}
+          error={errors.email}
+          size={fieldSize}
+        />
         <Input
           label="Postcode"
           name="postcode"
           autoComplete="postal-code"
           defaultValue={defaultPostcode}
-          hint="So we can confirm we cover you."
+          hint={hero ? undefined : "So we can confirm we cover you."}
           tone={tone}
+          size={fieldSize}
         />
-        <Select label="What do you need?" name="service" options={serviceOptions} placeholder="Choose a service" defaultValue={defaultService} tone={tone} />
-        <Select label="Property type" name="propertyType" options={propertyOptions} placeholder="Choose one" tone={tone} />
+        <Select
+          label="What do you need?"
+          name="service"
+          options={serviceOptions}
+          placeholder="Choose a service"
+          defaultValue={defaultService}
+          tone={tone}
+          size={fieldSize}
+        />
+        <Select
+          label="Property type"
+          name="propertyType"
+          options={propertyOptions}
+          placeholder="Choose one"
+          tone={tone}
+          size={fieldSize}
+        />
       </div>
 
       <Textarea
@@ -148,31 +231,54 @@ export function EnquiryForm({
         name="message"
         placeholder="Number of rooms, access, timescales, anything useful."
         tone={tone}
+        size={fieldSize}
+        rows={hero ? 2 : 4}
       />
 
       {status === "error" && (
-        <p className="rounded-control border border-coral/30 bg-coral/5 px-3.5 py-2.5 text-[0.85rem] text-coral" role="alert">
+        <p
+          className={cn(
+            "rounded-control border border-coral/30 bg-coral/5 text-coral",
+            hero ? "px-3 py-2 text-[0.8rem]" : "px-3.5 py-2.5 text-[0.85rem]",
+          )}
+          role="alert"
+        >
           {serverError}
         </p>
       )}
 
-      <div className="mt-1 flex flex-col gap-4 sm:flex-row sm:items-center">
-        <Button type="submit" size="lg" disabled={status === "sending"} className="sm:w-auto">
+      <div className={cn("flex flex-col", hero ? "gap-2.5" : "mt-1 gap-4 sm:flex-row sm:items-center")}>
+        <Button
+          type="submit"
+          size={hero ? "md" : "lg"}
+          disabled={status === "sending"}
+          className={hero ? "w-full" : "sm:w-auto"}
+        >
           {status === "sending" ? "Sending…" : "Request my free quote"}
         </Button>
-        <p className={cn("text-[0.85rem]", tone === "dark" ? "text-white/60" : "text-slate")}>
+        <p
+          className={cn(
+            hero ? "text-center text-[0.78rem]" : "text-[0.85rem]",
+            tone === "dark" ? "text-white/60" : "text-slate",
+          )}
+        >
           Or call{" "}
           <a
             href={site.phone.href}
             className={cn("inline-flex items-center gap-1 font-medium", tone === "dark" ? "text-white" : "text-plum")}
           >
-            <IconPhone className="h-4 w-4" />
+            <IconPhone className={hero ? "h-3.5 w-3.5" : "h-4 w-4"} />
             {site.phone.display}
           </a>
         </p>
       </div>
 
-      <p className={cn("text-[0.78rem]", tone === "dark" ? "text-white/60" : "text-slate")}>
+      <p
+        className={cn(
+          hero ? "text-center text-[0.72rem]" : "text-[0.78rem]",
+          tone === "dark" ? "text-white/60" : "text-slate",
+        )}
+      >
         No obligation. We&rsquo;ll only use your details to respond to your enquiry.
       </p>
     </form>

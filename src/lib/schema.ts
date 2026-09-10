@@ -29,8 +29,7 @@ function clean(text: string): string {
 
 /**
  * Sitewide business identity, injected once in the root layout. Every value
- * comes from src/config/site.ts, so it stays accurate as LAUNCH: placeholders
- * are replaced with real details.
+ * comes from src/config/site.ts.
  */
 export function localBusinessSchema() {
   return {
@@ -40,7 +39,6 @@ export function localBusinessSchema() {
     legalName: site.legalName,
     url: site.url,
     telephone: site.phone.href.replace("tel:", ""),
-    email: site.email,
     address: {
       "@type": "PostalAddress",
       addressLocality: site.address.locality,

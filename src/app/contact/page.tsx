@@ -3,14 +3,13 @@ import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/layout/Section";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { IconPhone, IconPin, IconClock } from "@/components/ui/icons";
-import { Mail } from "lucide-react";
 import { site } from "@/config/site";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact Us",
   description:
-    "Get in touch with Cambridge HVAC for air conditioning and heating across Cambridge. Call, email, or request a free quote online.",
+    "Get in touch with Cambridge HVAC for air conditioning and heating across Cambridge. Call or request a free quote online.",
   path: "/contact",
 });
 
@@ -20,7 +19,7 @@ export default function Page() {
       <PageHero
         eyebrow="Contact"
         title="Get in touch"
-        intro="Call, email, or send us a message and we will get back to you. For a survey, the quickest route is a quick call or the quote form."
+        intro="Call or send us a message and we will get back to you. For a survey, the quickest route is a quick call or the quote form."
       />
 
       <Section tone="frost">
@@ -37,19 +36,6 @@ export default function Page() {
                   {site.phone.display}
                 </a>
                 <p className="mt-1 text-[0.9rem] text-slate">The fastest way to reach us.</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4 rounded-card border border-rule bg-white p-6">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-plum/10 text-plum">
-                <Mail aria-hidden="true" strokeWidth={1.6} className="h-5 w-5" />
-              </span>
-              <div>
-                <h2 className="font-display text-[1.05rem] font-semibold text-navy">Email</h2>
-                <a href={`mailto:${site.email}`} className="mt-1 inline-block font-medium text-plum">
-                  {site.email}
-                </a>
-                <p className="mt-1 text-[0.9rem] text-slate">We aim to reply within one working day.</p>
               </div>
             </div>
 

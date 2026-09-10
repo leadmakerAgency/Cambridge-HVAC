@@ -24,8 +24,7 @@ export default function Page() {
         <p>
           This policy covers {site.url}, operated by {site.legalName} (&ldquo;we&rdquo;,
           &ldquo;us&rdquo;). We are the data controller for the personal information described
-          below. You can reach us at{" "}
-          <a href={`mailto:${site.email}`}>{site.email}</a> or{" "}
+          below. You can reach us on{" "}
           <a href={site.phone.href}>{site.phone.display}</a>.
         </p>
 
@@ -80,8 +79,8 @@ export default function Page() {
         <p>
           Under UK data protection law, you have the right to ask what information we hold about
           you, to have it corrected if it is wrong, to have it deleted, and to object to how it is
-          used. To make any of these requests, contact us at{" "}
-          <a href={`mailto:${site.email}`}>{site.email}</a>. If you are not satisfied with our
+          used. To make any of these requests, call us on{" "}
+          <a href={site.phone.href}>{site.phone.display}</a>. If you are not satisfied with our
           response, you can complain to the{" "}
           <a href="https://ico.org.uk" target="_blank" rel="noreferrer">
             Information Commissioner&rsquo;s Office

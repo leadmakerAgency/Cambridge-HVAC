@@ -21,6 +21,7 @@ function Wrapper({
   htmlFor,
   children,
   tone,
+  size = "default",
 }: {
   label: string;
   hint?: string;
@@ -29,13 +30,15 @@ function Wrapper({
   htmlFor: string;
   children: React.ReactNode;
   tone: "light" | "dark";
+  size?: "default" | "sm";
 }) {
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className={cn("flex flex-col", size === "sm" ? "gap-1" : "gap-1.5")}>
       <label
         htmlFor={htmlFor}
         className={cn(
-          "text-[0.8rem] font-medium",
+          "font-medium",
+          size === "sm" ? "text-[0.72rem]" : "text-[0.8rem]",
           tone === "dark" ? "text-white/80" : "text-slate",
         )}
       >
@@ -69,6 +72,7 @@ type FieldProps = {
   hint?: string;
   error?: string;
   tone?: "light" | "dark";
+  size?: "default" | "sm";
 };
 
 export function Input({
@@ -76,6 +80,7 @@ export function Input({
   hint,
   error,
   tone = "light",
+  size = "default",
   className,
   ...props
 }: FieldProps & React.InputHTMLAttributes<HTMLInputElement>) {
@@ -88,12 +93,13 @@ export function Input({
       required={props.required}
       htmlFor={id}
       tone={tone}
+      size={size}
     >
       <input
         id={id}
         className={cn(
           controlBase,
-          "h-11",
+          size === "sm" ? "h-10 px-3 text-[0.875rem]" : "h-11",
           error ? "border-plum" : "border-rule hover:border-slate/50",
           className,
         )}
@@ -109,6 +115,7 @@ export function Textarea({
   hint,
   error,
   tone = "light",
+  size = "default",
   className,
   ...props
 }: FieldProps & React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
@@ -121,13 +128,15 @@ export function Textarea({
       required={props.required}
       htmlFor={id}
       tone={tone}
+      size={size}
     >
       <textarea
         id={id}
         rows={4}
         className={cn(
           controlBase,
-          "py-2.5 leading-relaxed",
+          "leading-relaxed",
+          size === "sm" ? "py-2 text-[0.875rem]" : "py-2.5",
           error ? "border-plum" : "border-rule hover:border-slate/50",
           className,
         )}
@@ -143,6 +152,7 @@ export function Select({
   hint,
   error,
   tone = "light",
+  size = "default",
   options,
   placeholder,
   className,
@@ -160,13 +170,15 @@ export function Select({
       required={props.required}
       htmlFor={id}
       tone={tone}
+      size={size}
     >
       <div className="relative">
         <select
           id={id}
           className={cn(
             controlBase,
-            "h-11 cursor-pointer appearance-none pr-10",
+            "cursor-pointer appearance-none pr-10",
+            size === "sm" ? "h-10 px-3 text-[0.875rem]" : "h-11",
             error ? "border-plum" : "border-rule hover:border-slate/50",
             className,
           )}

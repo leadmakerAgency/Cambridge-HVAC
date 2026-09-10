@@ -81,7 +81,7 @@ export default async function Page({
                 .
               </p>
               <p className="mt-3 text-[0.85rem] text-slate/80">
-                {site.credentials.fgasBody} F‑Gas certified &middot; {site.credentials.insurance}.
+                F‑Gas certified &middot; {site.credentials.insurance}.
               </p>
             </div>
           </div>

@@ -38,4 +38,4 @@ A few things follow directly from this:
 
 Before booking anyone to install or service an air conditioning system, ask which F-Gas certification scheme they are registered with, and check the register yourself. It takes two minutes and tells you more than a portfolio of photos ever will.
 
-We are F-Gas certified with REFCOM, and we are always happy to share our registration details before you commit to anything. If you would like to see the full picture of how we work, our [about page](/about) covers it, or you can [get a free quote](/get-a-quote) directly.
+We are F-Gas certified. If you would like to see the full picture of how we work, our [about page](/about) covers it, or you can [get a free quote](/get-a-quote) directly.
