@@ -176,7 +176,7 @@ export function EnquiryForm({
           required
           tone={tone}
           error={errors.name}
-          size={fieldSize}
+          fieldSize={fieldSize}
         />
         <Input
           label="Phone"
@@ -186,7 +186,7 @@ export function EnquiryForm({
           required
           tone={tone}
           error={errors.phone}
-          size={fieldSize}
+          fieldSize={fieldSize}
         />
         <Input
           label="Email"
@@ -196,7 +196,7 @@ export function EnquiryForm({
           required
           tone={tone}
           error={errors.email}
-          size={fieldSize}
+          fieldSize={fieldSize}
         />
         <Input
           label="Postcode"
@@ -205,7 +205,7 @@ export function EnquiryForm({
           defaultValue={defaultPostcode}
           hint={hero ? undefined : "So we can confirm we cover you."}
           tone={tone}
-          size={fieldSize}
+          fieldSize={fieldSize}
         />
         <Select
           label="What do you need?"
@@ -214,7 +214,7 @@ export function EnquiryForm({
           placeholder="Choose a service"
           defaultValue={defaultService}
           tone={tone}
-          size={fieldSize}
+          fieldSize={fieldSize}
         />
         <Select
           label="Property type"
@@ -222,7 +222,7 @@ export function EnquiryForm({
           options={propertyOptions}
           placeholder="Choose one"
           tone={tone}
-          size={fieldSize}
+          fieldSize={fieldSize}
         />
       </div>
 
@@ -231,7 +231,7 @@ export function EnquiryForm({
         name="message"
         placeholder="Number of rooms, access, timescales, anything useful."
         tone={tone}
-        size={fieldSize}
+        fieldSize={fieldSize}
         rows={hero ? 2 : 4}
       />
 

@@ -21,7 +21,7 @@ function Wrapper({
   htmlFor,
   children,
   tone,
-  size = "default",
+  fieldSize = "default",
 }: {
   label: string;
   hint?: string;
@@ -30,15 +30,15 @@ function Wrapper({
   htmlFor: string;
   children: React.ReactNode;
   tone: "light" | "dark";
-  size?: "default" | "sm";
+  fieldSize?: "default" | "sm";
 }) {
   return (
-    <div className={cn("flex flex-col", size === "sm" ? "gap-1" : "gap-1.5")}>
+    <div className={cn("flex flex-col", fieldSize === "sm" ? "gap-1" : "gap-1.5")}>
       <label
         htmlFor={htmlFor}
         className={cn(
           "font-medium",
-          size === "sm" ? "text-[0.72rem]" : "text-[0.8rem]",
+          fieldSize === "sm" ? "text-[0.72rem]" : "text-[0.8rem]",
           tone === "dark" ? "text-white/80" : "text-slate",
         )}
       >
@@ -72,7 +72,8 @@ type FieldProps = {
   hint?: string;
   error?: string;
   tone?: "light" | "dark";
-  size?: "default" | "sm";
+  /** Visual density — not the native HTML `size` attribute. */
+  fieldSize?: "default" | "sm";
 };
 
 export function Input({
@@ -80,7 +81,7 @@ export function Input({
   hint,
   error,
   tone = "light",
-  size = "default",
+  fieldSize = "default",
   className,
   ...props
 }: FieldProps & React.InputHTMLAttributes<HTMLInputElement>) {
@@ -93,13 +94,13 @@ export function Input({
       required={props.required}
       htmlFor={id}
       tone={tone}
-      size={size}
+      fieldSize={fieldSize}
     >
       <input
         id={id}
         className={cn(
           controlBase,
-          size === "sm" ? "h-10 px-3 text-[0.875rem]" : "h-11",
+          fieldSize === "sm" ? "h-10 px-3 text-[0.875rem]" : "h-11",
           error ? "border-plum" : "border-rule hover:border-slate/50",
           className,
         )}
@@ -115,7 +116,7 @@ export function Textarea({
   hint,
   error,
   tone = "light",
-  size = "default",
+  fieldSize = "default",
   className,
   ...props
 }: FieldProps & React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
@@ -128,7 +129,7 @@ export function Textarea({
       required={props.required}
       htmlFor={id}
       tone={tone}
-      size={size}
+      fieldSize={fieldSize}
     >
       <textarea
         id={id}
@@ -136,7 +137,7 @@ export function Textarea({
         className={cn(
           controlBase,
           "leading-relaxed",
-          size === "sm" ? "py-2 text-[0.875rem]" : "py-2.5",
+          fieldSize === "sm" ? "py-2 text-[0.875rem]" : "py-2.5",
           error ? "border-plum" : "border-rule hover:border-slate/50",
           className,
         )}
@@ -152,7 +153,7 @@ export function Select({
   hint,
   error,
   tone = "light",
-  size = "default",
+  fieldSize = "default",
   options,
   placeholder,
   className,
@@ -170,7 +171,7 @@ export function Select({
       required={props.required}
       htmlFor={id}
       tone={tone}
-      size={size}
+      fieldSize={fieldSize}
     >
       <div className="relative">
         <select
@@ -178,7 +179,7 @@ export function Select({
           className={cn(
             controlBase,
             "cursor-pointer appearance-none pr-10",
-            size === "sm" ? "h-10 px-3 text-[0.875rem]" : "h-11",
+            fieldSize === "sm" ? "h-10 px-3 text-[0.875rem]" : "h-11",
             error ? "border-plum" : "border-rule hover:border-slate/50",
             className,
           )}
